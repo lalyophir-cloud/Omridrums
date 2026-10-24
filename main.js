@@ -218,13 +218,24 @@
       '<div class="ticket__body">' +
         '<span class="mono ticket__no">NO. ' + pad(i + 1) + " / ADMIT ONE</span>" +
         "<h4>" + esc(s.venue) + "</h4>" +
-        "<p>" + esc(s.city) + (s.project ? " · " + esc(s.project) : "") + "</p>" +
-        '<p class="mono ticket__time">יום ' + DAYS[s.d.getDay()] + (s.time ? " / " + esc(s.time) : "") + "</p>" +
+        (s.project ? '<p class="ticket__project">' + esc(s.project) + "</p>" : "") +
+        "<p>" + esc(s.city) + (s.address ? ", " + esc(s.address) : "") + "</p>" +
+        '<p class="mono ticket__time">יום ' + DAYS[s.d.getDay()] + (s.time ? " / " + (s.timeLabel ? esc(s.timeLabel) + " " : "") + esc(s.time) : "") + "</p>" +
       "</div>" +
       '<div class="ticket__stub">' + cta + '<div class="barcode barcode--sm" data-barcode="' + esc(s.date + s.venue) + '"></div></div>' +
     "</article>";
   }).join("") : '<p class="tickets__empty">אין הופעות קרובות כרגע. שווה לקפוץ לפה שוב בקרוב.</p>';
 
+
+  var SP = S.showsPhoto;
+  if (SP && SP.src) {
+    slot("shows-photo").innerHTML =
+      '<button type="button" class="shows-photo__frame" data-full="' + esc(SP.src) + '" data-cap="' + esc(SP.caption || "") + '">' +
+        '<img src="' + esc(SP.src) + '" alt="' + esc(SP.caption || "") + '" loading="lazy"></button>' +
+      '<figcaption><span class="hand">' + esc(SP.caption || "") + "</span>" + (SP.credit ? creditLink("") : "") + "</figcaption>";
+  } else {
+    slot("shows-photo").remove();
+  }
 
   /* ---------- GALLERY ---------- */
   var TILT = [-3, 2.2, -1.4, 3, -2.4, 1.6, -2, 2.6, -1, 3.2, -2.8, 1.2];

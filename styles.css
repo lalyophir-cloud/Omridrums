@@ -425,6 +425,14 @@ body.beat .beam { opacity: 1; }
 @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(141, 191, 156, .7); } 100% { box-shadow: 0 0 0 14px rgba(141, 191, 156, 0); } }
 
 .tickets { display: grid; gap: 16px; }
+.ticket__project { font-weight: 700; font-size: clamp(16px, 1.6vw, 20px); margin-top: 4px; }
+.shows-photo { margin-top: clamp(36px, 5vw, 64px); }
+.shows-photo__frame { display: block; width: 100%; overflow: hidden; border-radius: 6px; cursor: zoom-in; }
+.shows-photo__frame img { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; object-position: 50% 45%; transition: transform .9s var(--ease); }
+.shows-photo__frame:hover img { transform: scale(1.03); }
+.shows-photo figcaption { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; padding-top: 10px; }
+.shows-photo .hand { font-size: 20px; color: var(--green-lt); }
+.shows-photo .credit:hover { color: var(--green-lt); }
 .tickets__empty { font-size: 20px; opacity: .7; padding: 30px 0; }
 .ticket {
   --notch: 14px;
@@ -739,6 +747,7 @@ body.beat .hero__word--outline { -webkit-text-stroke-color: var(--green); }
   .video--featured .video__play { width: 70px; height: 70px; }
 
   .ticket { grid-template-columns: 1fr; }
+  .shows-photo__frame img { aspect-ratio: 4 / 3; }
   .ticket:hover { transform: none; }
   .ticket__date { flex-direction: row; justify-content: space-between; align-items: baseline; border-inline-end: 0; border-bottom: 2px dashed var(--ink); padding: 14px 18px; }
   .ticket__date b { font-size: 48px; }

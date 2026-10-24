@@ -64,10 +64,16 @@ window.SITE = {
   // הופעות. התאריך בפורמט שנה-חודש-יום.
   // הופעות שהתאריך שלהן עבר יורדות מהאתר לבד.
   shows: [
-    { date: "2026-11-13", time: "21:30", venue: "הבארבי",       city: "תל אביב", project: "עם הלהקה",       ticketUrl: "" },
-    { date: "2026-11-27", time: "22:00", venue: "לבונטין 7",     city: "תל אביב", project: "ערב ג'אז",       ticketUrl: "" },
-    { date: "2026-12-18", time: "21:00", venue: "זאפה",          city: "ירושלים", project: "אורח מיוחד",     ticketUrl: "" }
+    {
+      date: "2026-12-17", time: "19:00", timeLabel: "פתיחת דלתות",
+      venue: "גגארין", city: "תל אביב", address: "קיבוץ גלויות 13",
+      project: "ארקטיק קרטיב - מחווה לארקטיק מאנקיז",
+      ticketUrl: ""
+    }
   ],
+
+  // תמונה שמופיעה מתחת להופעות
+  showsPhoto: { src: "images/band-gagarin.jpg", caption: "ארקטיק קרטיב בגגארין", credit: true },
 
   // גלריה. shape אפשרי: "pill" (עגלגל), "tall" (גבוה), "wide" (רחב), "" (רגיל)
   // קרדיט לצלם. תמונות עם credit: true מקבלות את הקרדיט הזה
