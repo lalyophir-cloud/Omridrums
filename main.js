@@ -235,16 +235,32 @@
   }
 
   /* ---------- GALLERY ---------- */
-  slot("gallery").innerHTML = (S.gallery || []).filter(function (g) { return g.src; }).map(function (g, i) {
+  // גלריה כרצועות פילם: התמונות מתחלקות בין 3 רצועות (2 בנייד)
+  var shots = (S.gallery || []).filter(function (g) { return g.src; }).map(function (g, i) {
     var cap = (g.caption || "") + (g.credit && PC ? "  /  Photo: " + PC.name : "");
-    return '<figure class="shot reveal">' +
+    return '<figure class="shot">' +
       '<button type="button" class="shot__frame" data-full="' + esc(g.src) + '" data-cap="' + esc(cap) + '">' +
         '<img src="' + esc(g.src) + '" alt="' + esc(g.caption || "") + '" loading="lazy">' +
         '<figcaption><span class="mono">' + pad(i + 1) + "</span> " + esc(g.caption || "") +
           (g.credit && PC ? '<small class="mono">Photo: ' + esc(PC.name) + "</small>" : "") + "</figcaption>" +
       "</button>" +
+      '<span class="shot__no mono" aria-hidden="true">' + (i + 1) + "A ▸</span>" +
     "</figure>";
-  }).join("");
+  });
+  var stripsMq = matchMedia("(max-width: 640px)"), stripsN = 0;
+  function layoutStrips() {
+    var n = stripsMq.matches ? 2 : 3;
+    if (n === stripsN) return;
+    stripsN = n;
+    var cols = [];
+    for (var k = 0; k < n; k++) cols.push([]);
+    shots.forEach(function (s, i) { cols[i % n].push(s); });
+    slot("gallery").innerHTML = cols.map(function (c, k) {
+      return '<div class="strip reveal is-in"><span class="strip__edge mono" aria-hidden="true">KODAK 400 TX  ' + (k + 1) + "</span>" + c.join("") + "</div>";
+    }).join("");
+  }
+  layoutStrips();
+  if (stripsMq.addEventListener) stripsMq.addEventListener("change", layoutStrips);
 
   var box = $(".lightbox");
   document.addEventListener("click", function (e) {
