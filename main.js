@@ -81,6 +81,12 @@
     ? '<img src="' + esc(S.heroImage) + '" alt="' + esc(S.name || "") + ' מתופף">'
     : DRUM_KIT_SVG;
 
+  var PC = S.photoCredit;
+  function creditLink(cls) {
+    return PC ? '<a class="credit ' + cls + ' mono" href="' + esc(PC.url) + '" target="_blank" rel="noopener">Photo: ' + esc(PC.name) + "</a>" : "";
+  }
+  if (S.heroImage && PC) slot("hero-figure").insertAdjacentHTML("beforeend", creditLink("credit--hero"));
+
   /* ---------- MARQUEE ---------- */
   var chunk = (S.genres || []).map(function (g) { return "<span>" + esc(g) + "</span><i>✶</i>"; }).join("");
   slot("marquee").innerHTML = '<div class="marquee__group">' + chunk + chunk + "</div>" +
@@ -202,10 +208,12 @@
     var label = "FRAME " + pad(i + 1);
     var inner = media(g.src, label, g.caption);
     var tag = g.src ? "button" : "div";
-    var extra = g.src ? ' type="button" data-full="' + esc(g.src) + '" data-cap="' + esc(g.caption || "") + '"' : "";
+    var cap = (g.caption || "") + (g.credit && PC ? "  /  Photo: " + PC.name : "");
+    var extra = g.src ? ' type="button" data-full="' + esc(g.src) + '" data-cap="' + esc(cap) + '"' : "";
     return '<figure class="shot reveal' + (g.shape ? " shot--" + esc(g.shape) : "") + '" style="--r:' + TILT[i % TILT.length] + 'deg">' +
       "<" + tag + ' class="shot__frame"' + extra + ">" + inner + "</" + tag + ">" +
       '<figcaption class="hand"><span>' + pad(i + 1) + "</span> " + esc(g.caption || "") + "</figcaption>" +
+      (g.credit ? creditLink("credit--print") : "") +
     "</figure>";
   });
   // פתק אחרי כל תמונה שלישית
@@ -249,6 +257,7 @@
   }).join("");
 
   slot("year").textContent = new Date().getFullYear();
+  if (PC) slot("credit").innerHTML = creditLink("");
 
   /* ---------- BARCODES ---------- */
   $$("[data-barcode]").forEach(barcode);

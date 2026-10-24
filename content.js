@@ -74,14 +74,17 @@ window.SITE = {
   ],
 
   // גלריה. shape אפשרי: "pill" (עגלגל), "tall" (גבוה), "wide" (רחב), "" (רגיל)
+  // קרדיט לצלם. תמונות עם credit: true מקבלות את הקרדיט הזה
+  photoCredit: { name: "@eilonbphoto", url: "https://instagram.com/eilonbphoto" },
+
   gallery: [
-    { src: "images/spotlights.jpg",   caption: "באור הזרקורים",   shape: "tall" },
-    { src: "images/sticks-bw.jpg",    caption: "מקלות למעלה",     shape: "pill" },
-    { src: "images/band-gagarin.jpg", caption: "גגארין, תל אביב", shape: "wide" },
-    { src: "images/live-red.jpg",     caption: "על הבמה",         shape: "" },
-    { src: "images/live-green.jpg",   caption: "רגע לפני הפזמון", shape: "pill" },
-    { src: "images/stage-view.jpg",   caption: "מאחורי התופים",   shape: "wide" },
-    { src: "images/arms-up-bw.jpg",   caption: "סוף ההופעה",      shape: "tall" },
+    { src: "images/spotlights.jpg",   caption: "באור הזרקורים",   shape: "tall", credit: true },
+    { src: "images/sticks-bw.jpg",    caption: "מקלות למעלה",     shape: "pill", credit: true },
+    { src: "images/band-gagarin.jpg", caption: "גגארין, תל אביב", shape: "wide", credit: true },
+    { src: "images/live-red.jpg",     caption: "על הבמה",         shape: "", credit: true },
+    { src: "images/live-green.jpg",   caption: "רגע לפני הפזמון", shape: "pill", credit: true },
+    { src: "images/stage-view.jpg",   caption: "מאחורי התופים",   shape: "wide", credit: true },
+    { src: "images/arms-up-bw.jpg",   caption: "סוף ההופעה",      shape: "tall", credit: true },
     { src: "images/pearl-kit-bw.jpg", caption: "מאחורי ה-Pearl",  shape: "tall" },
     { src: "images/through-phone.jpg",caption: "מהקהל",           shape: "" },
     { src: "images/focus-bw.jpg",     caption: "פוקוס",           shape: "pill" }
