@@ -11,7 +11,7 @@
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Rubik:wght@400;500;700;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&family=Anton&family=Permanent+Marker&family=Rubik:wght@400;500;700;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -150,6 +150,7 @@
       <div class="music">
         <div class="music__featured reveal" data-slot="featured"></div>
         <div class="music__side reveal">
+          <div class="record" data-slot="record"></div>
           <p class="music__note">הקלטות, סרטונים וקטעים מהופעות. לוחצים ומנגנים.</p>
           <div class="platforms" data-slot="platforms"></div>
           <div class="spotify" data-slot="spotify"></div>
@@ -182,7 +183,12 @@
         <h2 class="sec-title"><span class="en">FRAMES</span><span class="he">גלריה</span></h2>
         <span class="sec-meta mono">/ ON STAGE<br>/ BACKSTAGE</span>
       </header>
-      <div class="gallery" data-slot="gallery"></div>
+      <div class="contact-sheet">
+        <div class="film mono" aria-hidden="true"><span>KODAK PORTRA 400</span><i>90 F11.0 &nbsp;×&nbsp; P80/2 120</i><span>KODAK PORTRA 400</span><i>90 F11.0 &nbsp;×&nbsp; P80/2 120</i></div>
+        <p class="hand gallery__sign" aria-hidden="true">Omri Berger</p>
+        <div class="gallery" data-slot="gallery"></div>
+        <div class="film film--side mono" aria-hidden="true"><span>90 F11.0 &nbsp;×&nbsp; P80/2 120</span><b>50</b><span>90 F11.0 &nbsp;×&nbsp; P80/2 120</span></div>
+      </div>
     </section>
 
     <!-- ===== CONTACT ===== -->

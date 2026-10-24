@@ -51,6 +51,8 @@ window.SITE = {
       { youtubeId: "", title: "גרוב פאנק", tag: "GROOVE" },
       { youtubeId: "", title: "הופעה עם ההרכב", tag: "LIVE" }
     ],
+    // העטיפה של התקליט שיוצא מהצד (התמונה במרכז התקליט = תמונת הפרופיל)
+    cover: "images/live-red.jpg",
     // לינק לפלייליסט / אמן / שיר בספוטיפיי. ריק = לא יוצג נגן
     spotify: "",
     platforms: [
@@ -84,6 +86,9 @@ window.SITE = {
     { src: "images/through-phone.jpg",caption: "מהקהל",           shape: "" },
     { src: "images/focus-bw.jpg",     caption: "פוקוס",           shape: "pill" }
   ],
+
+  // פתקים בכתב יד שמפוזרים בין התמונות בגלריה
+  galleryNotes: ["עוד שיר!!", "Live @ Gagarin TLV", "ידיים למעלה ✶", "sticks up, always"],
 
   contact: {
     email: "Omriberger123@gmail.com",

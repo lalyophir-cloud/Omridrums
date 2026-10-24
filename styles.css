@@ -16,6 +16,7 @@
   --f-display: "Anton", "Rubik", Impact, sans-serif;
   --f-body: "Rubik", system-ui, sans-serif;
   --f-mono: "Space Mono", "Rubik", ui-monospace, monospace;
+  --f-hand: "Permanent Marker", "Amatic SC", cursive;
   --ease: cubic-bezier(.2, .8, .2, 1);
 }
 
@@ -338,6 +339,34 @@ body.menu-open .topbar { background: transparent; border-color: transparent; col
    MUSIC
    ========================================================= */
 .music { display: grid; grid-template-columns: minmax(0, 1.8fr) minmax(0, 1fr); gap: clamp(24px, 4vw, 48px); margin-bottom: clamp(24px, 4vw, 48px); }
+.record { position: relative; width: 100%; max-width: 440px; aspect-ratio: 1.55 / 1; margin-bottom: 28px; }
+.record__sleeve {
+  position: absolute; inset-block: 0; inset-inline-start: 0; aspect-ratio: 1; z-index: 2; overflow: hidden;
+  background: var(--ink); box-shadow: 0 20px 40px rgba(0, 0, 0, .3);
+}
+.record__sleeve img { width: 100%; height: 100%; object-fit: cover; filter: contrast(1.05); }
+.record__sleeve .ph { position: absolute; }
+.record__sleeve::after { content: ""; position: absolute; inset: 0; background: linear-gradient(transparent 40%, rgba(0, 0, 0, .75)); }
+.record__title {
+  position: absolute; z-index: 1; bottom: 30px; inset-inline-start: 16px; direction: ltr; text-align: left;
+  font-family: var(--f-display); font-size: clamp(30px, 3.4vw, 46px); line-height: .9; color: var(--paper);
+}
+.record__side { position: absolute; z-index: 1; bottom: 12px; inset-inline-start: 16px; color: var(--green-lt); }
+.record__vinyl {
+  position: absolute; top: 4%; bottom: 4%; aspect-ratio: 1; inset-inline-start: 34%; z-index: 1; border-radius: 50%;
+  background:
+    conic-gradient(from 30deg, transparent 0 40deg, rgba(255, 255, 255, .14) 60deg, transparent 80deg 200deg, rgba(255, 255, 255, .1) 220deg, transparent 240deg),
+    repeating-radial-gradient(circle, #111 0 2px, #1d1d1d 2px 3px);
+  box-shadow: 0 16px 30px rgba(0, 0, 0, .35);
+  display: grid; place-items: center;
+  animation: spin 7s linear infinite; transition: inset-inline-start .7s var(--ease);
+}
+.record:hover .record__vinyl { inset-inline-start: 44%; animation-duration: 2.5s; }
+.record__label { position: relative; width: 36%; aspect-ratio: 1; border-radius: 50%; overflow: hidden; background: var(--green); border: 3px solid var(--green); }
+.record__label img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(1) contrast(1.1); }
+.record__label .ph { position: absolute; background: var(--green); }
+.record__hole { position: absolute; left: 50%; top: 50%; width: 10px; height: 10px; margin: -5px 0 0 -5px; border-radius: 50%; background: var(--paper); }
+
 .music__note { font-size: clamp(20px, 2vw, 26px); font-weight: 700; line-height: 1.2; margin-bottom: 18px; }
 .platforms { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 22px; }
 .spotify iframe { width: 100%; border: 0; border-radius: 12px; display: block; }
@@ -436,26 +465,69 @@ body.menu-open .topbar { background: transparent; border-color: transparent; col
 /* =========================================================
    GALLERY (collage)
    ========================================================= */
-.gallery { columns: 4; column-gap: clamp(12px, 1.8vw, 24px); }
-.shot { break-inside: avoid; margin-bottom: clamp(18px, 2.4vw, 32px); }
-.shot:nth-child(4n + 2) { padding-top: 40px; }
-.shot__frame { aspect-ratio: 4 / 5; }
-.shot--tall .shot__frame { aspect-ratio: 3 / 4.4; }
-.shot--wide .shot__frame { aspect-ratio: 4 / 3; }
-.shot--pill .shot__frame { aspect-ratio: 3 / 4.6; }
-
-.shot__frame { position: relative; overflow: hidden; display: block; width: 100%; border: 1.5px solid var(--ink); background: var(--paper-2); }
-.shot--pill .shot__frame { border-radius: 999px; }
-button.shot__frame { cursor: zoom-in; }
-.shot__frame img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; filter: grayscale(1) contrast(1.2); transition: filter .5s, transform .9s var(--ease); }
-.shot__frame:hover img { filter: none; transform: scale(1.05); }
-.shot__frame::after {
-  content: ""; position: absolute; inset: 0; pointer-events: none; mix-blend-mode: multiply; opacity: .3;
-  background: radial-gradient(circle, #000 1px, transparent 1.4px) 0 0 / 5px 5px; transition: opacity .5s;
+/* contact sheet / film prints (Kendrick collage reference) */
+.contact-sheet {
+  position: relative; overflow: hidden; padding: 70px clamp(10px, 3vw, 50px) 40px; background: #f6f4ef;
+  box-shadow: inset 0 0 120px rgba(0, 0, 0, .08);
 }
-.shot__frame:hover::after { opacity: 0; }
-.shot figcaption { padding-top: 8px; display: flex; gap: 8px; text-transform: none; font-size: 12px; }
-.shot figcaption span { color: var(--green); font-weight: 700; }
+.contact-sheet::before {
+  content: ""; position: absolute; inset: 0; pointer-events: none; opacity: .5;
+  background:
+    radial-gradient(circle at 96% 8%, rgba(0, 0, 0, .55) 0 2px, transparent 3px),
+    radial-gradient(circle at 98% 30%, rgba(0, 0, 0, .5) 0 1.5px, transparent 2.5px),
+    radial-gradient(circle at 3% 62%, rgba(0, 0, 0, .45) 0 2px, transparent 3px),
+    radial-gradient(circle at 1.5% 90%, rgba(0, 0, 0, .5) 0 3px, transparent 4px),
+    radial-gradient(circle at 60% 2%, rgba(0, 0, 0, .4) 0 1.5px, transparent 2.5px);
+}
+.film {
+  position: absolute; top: 18px; inset-inline: clamp(10px, 3vw, 50px);
+  display: flex; gap: 40px; direction: ltr; font-weight: 700; font-size: 13px; letter-spacing: .02em;
+}
+.film i { font-style: normal; font-weight: 400; font-size: 10px; align-self: flex-end; }
+.film--side {
+  top: 140px; inset-inline: auto; right: 10px; writing-mode: vertical-rl; gap: 60px; opacity: .8; white-space: nowrap;
+}
+.film--side b { font-size: 16px; }
+.hand { font-family: var(--f-hand); text-transform: none; letter-spacing: 0; }
+.gallery__sign {
+  position: absolute; top: 34px; left: clamp(20px, 6vw, 90px); z-index: 3;
+  font-size: clamp(40px, 6vw, 84px); line-height: 1; transform: rotate(-8deg); direction: ltr;
+}
+
+.gallery { columns: 4; column-gap: clamp(18px, 2.6vw, 40px); position: relative; padding-top: 100px; }
+.shot, .note { break-inside: avoid; }
+.shot {
+  position: relative; margin-bottom: clamp(26px, 3vw, 44px);
+  background: #fbfaf7; padding: 10px 10px 4px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, .25), 0 14px 28px rgba(0, 0, 0, .16);
+  transform: rotate(var(--r, 0deg)); transition: transform .5s var(--ease), box-shadow .5s;
+}
+.shot.reveal { transform: translateY(40px) rotate(var(--r, 0deg)); }
+.shot.reveal.is-in { transform: rotate(var(--r, 0deg)); }
+.shot.reveal.is-in:hover { transform: rotate(0) scale(1.04); z-index: 2; box-shadow: 0 2px 4px rgba(0, 0, 0, .25), 0 30px 50px rgba(0, 0, 0, .25); }
+/* tape */
+.shot:nth-child(3n + 1)::before {
+  content: ""; position: absolute; z-index: 2; top: -12px; left: 50%; width: 90px; height: 24px;
+  transform: translateX(-50%) rotate(-4deg); background: rgba(232, 226, 210, .82);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, .12);
+}
+.shot__frame { aspect-ratio: 4 / 5; }
+.shot--tall .shot__frame { aspect-ratio: 3 / 4.2; }
+.shot--wide .shot__frame { aspect-ratio: 4 / 3; }
+.shot--pill .shot__frame { aspect-ratio: 1 / 1; }
+
+.shot__frame { position: relative; overflow: hidden; display: block; width: 100%; background: var(--paper-2); }
+button.shot__frame { cursor: zoom-in; }
+.shot__frame img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; filter: grayscale(1) contrast(1.25) brightness(.95); transition: filter .5s, transform .9s var(--ease); }
+.shot:hover .shot__frame img { filter: none; }
+.shot figcaption { padding: 8px 2px 6px; display: flex; gap: 8px; font-size: 17px; line-height: 1.2; }
+.shot figcaption span { color: var(--green); }
+.note {
+  margin: 0 0 clamp(26px, 3vw, 44px); padding: 6px 4px; font-size: clamp(24px, 2.4vw, 32px); line-height: 1.1;
+  transform: rotate(var(--r, 0deg)); color: var(--ink);
+}
+.note.reveal { transform: translateY(30px) rotate(var(--r, 0deg)); }
+.note.reveal.is-in { transform: rotate(var(--r, 0deg)); }
 
 .lightbox { border: 0; padding: 0; background: transparent; max-width: 92vw; max-height: 92vh; overflow: visible; }
 .lightbox::backdrop { background: rgba(13, 13, 13, .92); }
@@ -540,6 +612,11 @@ button.shot__frame { cursor: zoom-in; }
   .music { grid-template-columns: 1fr; }
 
   .gallery { columns: 2; }
+  .film--side { display: none; }
+  .film { overflow: hidden; white-space: nowrap; gap: 24px; }
+  .gallery__sign { top: 38px; font-size: 38px; }
+  .gallery { padding-top: 64px; }
+  .shot figcaption { font-size: 14px; }
 
   .contact__top { grid-template-columns: 1fr; grid-template-rows: none; }
   .sec-num--ink, .contact__intro, .contact__big { grid-column: 1; grid-row: auto; }
@@ -582,4 +659,5 @@ button.shot__frame { cursor: zoom-in; }
   *, *::before, *::after { animation: none !important; transition: none !important; }
   html { scroll-behavior: auto; }
   .reveal { opacity: 1; transform: none; }
+  .shot.reveal, .note.reveal { transform: rotate(var(--r, 0deg)); }
 }

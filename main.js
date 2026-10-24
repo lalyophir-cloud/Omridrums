@@ -118,6 +118,17 @@
     "</article>";
   }
 
+  if (M.cover) {
+    slot("record").innerHTML =
+      '<div class="record__vinyl" aria-hidden="true"><div class="record__label">' + media(A.portrait, "") +
+        '<span class="record__hole"></span></div></div>' +
+      '<div class="record__sleeve">' + media(M.cover, "COVER", "עטיפה") +
+        '<span class="record__title">' + esc(S.nameEn || "") + "<br>DRUMS</span>" +
+        '<span class="record__side mono">LIVE SESSIONS / SIDE A</span></div>';
+  } else {
+    slot("record").remove();
+  }
+
   if (M.featured) slot("featured").innerHTML = videoCard(M.featured, 0, true);
   slot("videos").innerHTML = (M.videos || []).map(function (v, i) { return videoCard(v, i + 1); }).join("");
 
@@ -185,16 +196,26 @@
   if (!past.length) $(".past").hidden = true;
 
   /* ---------- GALLERY ---------- */
-  slot("gallery").innerHTML = (S.gallery || []).map(function (g, i) {
+  var TILT = [-3, 2.2, -1.4, 3, -2.4, 1.6, -2, 2.6, -1, 3.2, -2.8, 1.2];
+  var notes = S.galleryNotes || [];
+  var shots = (S.gallery || []).map(function (g, i) {
     var label = "FRAME " + pad(i + 1);
     var inner = media(g.src, label, g.caption);
     var tag = g.src ? "button" : "div";
     var extra = g.src ? ' type="button" data-full="' + esc(g.src) + '" data-cap="' + esc(g.caption || "") + '"' : "";
-    return '<figure class="shot reveal' + (g.shape ? " shot--" + esc(g.shape) : "") + '">' +
+    return '<figure class="shot reveal' + (g.shape ? " shot--" + esc(g.shape) : "") + '" style="--r:' + TILT[i % TILT.length] + 'deg">' +
       "<" + tag + ' class="shot__frame"' + extra + ">" + inner + "</" + tag + ">" +
-      '<figcaption class="mono"><span>' + pad(i + 1) + "</span> " + esc(g.caption || "") + "</figcaption>" +
+      '<figcaption class="hand"><span>' + pad(i + 1) + "</span> " + esc(g.caption || "") + "</figcaption>" +
     "</figure>";
-  }).join("");
+  });
+  // פתק אחרי כל תמונה שלישית
+  var out = [];
+  shots.forEach(function (s, i) {
+    out.push(s);
+    var n = notes[Math.floor(i / 3)];
+    if (i % 3 === 1 && n) out.push('<p class="note hand reveal" style="--r:' + TILT[(i + 3) % TILT.length] * 1.5 + 'deg">' + esc(n) + "</p>");
+  });
+  slot("gallery").innerHTML = out.join("");
 
   var box = $(".lightbox");
   document.addEventListener("click", function (e) {
