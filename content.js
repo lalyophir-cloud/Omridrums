@@ -68,7 +68,7 @@ window.SITE = {
       date: "2026-12-17", time: "19:00", timeLabel: "פתיחת דלתות",
       venue: "גגארין", city: "תל אביב", address: "קיבוץ גלויות 13",
       project: "ארקטיק קרטיב - מחווה לארקטיק מאנקיז",
-      ticketUrl: ""
+      ticketUrl: "https://zygo.co.il/event/440917234594708168"
     }
   ],
 
