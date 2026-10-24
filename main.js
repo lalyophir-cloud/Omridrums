@@ -79,7 +79,7 @@
     var fig = slot("hero-figure"), svg = $(".beams", fig), title = $(".hero__title");
     if (!svg || !title) return;
     var fr = fig.getBoundingClientRect(), tr = title.getBoundingClientRect();
-    var w = fr.width, ext = Math.max(0, fr.top - tr.top + (innerWidth <= 900 ? 8 : 34)), h = fr.height + ext;
+    var w = fr.width, ext = Math.max(0, fr.top - tr.top + (innerWidth <= 900 ? 30 : 62)), h = fr.height + ext;
     var bottom = ext + fr.height * 0.93, top = 10, half = w * 0.085, blur = (w * 0.009).toFixed(1);
     svg.style.top = -ext + "px";
     svg.style.height = h + "px";
