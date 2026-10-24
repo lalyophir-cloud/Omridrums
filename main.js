@@ -292,6 +292,16 @@
     "</a>";
   }).join("");
 
+  var wa = C.whatsapp ? "https://wa.me/" + C.whatsapp.replace(/\D/g, "") : "";
+  slot("services").innerHTML = (S.services || []).map(function (s, i) {
+    var href = s.link === "whatsapp" ? wa : s.link;
+    var ext = /^https?:/.test(href || "");
+    return '<li class="reveal"><span class="wid__num mono">' + pad(i + 1) + " / " + esc(s.en) + "</span>" +
+      "<h3>" + esc(s.he) + "</h3><p>" + esc(s.text) + "</p>" +
+      (href ? '<a class="wid__cta" href="' + esc(href) + '"' + (ext ? ' target="_blank" rel="noopener"' : "") + ">" + esc(s.cta || "") + " ↗</a>" : "") +
+    "</li>";
+  }).join("");
+
   slot("year").textContent = new Date().getFullYear();
   if (PC) slot("credit").innerHTML = creditLink("");
 

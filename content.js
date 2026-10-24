@@ -95,6 +95,13 @@ window.SITE = {
   // פתקים בכתב יד שמפוזרים בין התמונות בגלריה
   galleryNotes: ["Live @ Gagarin TLV"],
 
+  // "מה אני עושה". link: "whatsapp" = כפתור לוואטסאפ, או לינק רגיל, או ריק
+  services: [
+    { en: "Live shows",    he: "הופעות",       text: "מתופף בהופעות חיות עם הרכבים ואמנים, וגם מחליף לערב כשצריך.", link: "#shows",   cta: "להופעות הקרובות" },
+    { en: "Recordings",    he: "הקלטות",       text: "סשנים באולפן ותופים להקלטות, משיר אחד ועד אלבום שלם.",      link: "whatsapp", cta: "לתאם סשן" },
+    { en: "Drum lessons",  he: "שיעורי תופים", text: "שיעורים פרטיים למתחילים ולמתקדמים. גרוב, טכניקה ומה שבא לכם לנגן.", link: "whatsapp", cta: "לתאם שיעור" }
+  ],
+
   contact: {
     email: "Omriberger123@gmail.com",
     instagram: "https://instagram.com/Omri_berger",

@@ -256,6 +256,9 @@ body.beat .beam { opacity: 1; }
    ========================================================= */
 .section { position: relative; padding: clamp(70px, 10vw, 140px) var(--gutter); }
 .section--dark { background: var(--ink); color: var(--paper); }
+.section--green { background: var(--green); color: var(--paper); }
+.section--green .sec-num { -webkit-text-stroke-color: var(--paper); }
+.section--green .sec-title .he { color: var(--green-lt); }
 
 .sec-head {
   display: grid; grid-template-columns: auto 1fr auto; align-items: end; gap: clamp(14px, 3vw, 40px);
@@ -416,6 +419,30 @@ body.beat .beam { opacity: 1; }
 .video__meta .mono { color: var(--green); font-weight: 700; }
 .video__meta h3 { font-size: 16px; font-weight: 700; }
 .video--featured .video__meta h3 { font-size: clamp(20px, 2vw, 26px); font-weight: 900; }
+
+/* =========================================================
+   WHAT I DO (white silhouette with handwriting)
+   ========================================================= */
+.wid { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: clamp(30px, 5vw, 80px); align-items: center; }
+.wid__art { position: relative; container-type: inline-size; transform: rotate(-1.5deg); box-shadow: 0 30px 60px rgba(0, 0, 0, .5); }
+.wid__art img { width: 100%; display: block; }
+.wid__words { position: absolute; inset: 0; color: var(--ink); direction: ltr; pointer-events: none; }
+.wid__words span { position: absolute; display: block; line-height: 1; white-space: nowrap; font-family: var(--f-hand); font-size: 5.6cqw; }
+.wid__words b { color: var(--green); font-weight: inherit; }
+.wid__words .w1 { left: 24%; top: 28.5%; font-size: 6.4cqw; transform: rotate(-6deg); }
+.wid__words .w2 { left: 21%; top: 39.5%; font-size: 6.6cqw; font-family: "Amatic SC", var(--f-hand); font-weight: 700; transform: rotate(4deg); }
+.wid__words .w3 { left: 9.5%; top: 49.5%; font-size: 5.3cqw; transform: rotate(-3deg); }
+.wid__words .w4 { left: 17%; top: 56.5%; font-size: 6.4cqw; font-family: "Amatic SC", var(--f-hand); font-weight: 700; transform: rotate(2deg); }
+.wid__words .w5 { left: 16.5%; top: 63%; font-size: 5.8cqw; transform: rotate(-4deg); }
+
+.wid__list { list-style: none; margin: 0; padding: 0; }
+.wid__list li { padding: 24px 0; border-top: 1px solid rgba(236, 233, 226, .25); }
+.wid__list li:last-child { border-bottom: 1px solid rgba(236, 233, 226, .25); }
+.wid__num { color: var(--green-lt); }
+.wid__list h3 { font-size: clamp(30px, 4vw, 54px); font-weight: 900; line-height: 1; margin: 6px 0 8px; }
+.wid__list p { color: rgba(236, 233, 226, .75); max-width: 440px; }
+.wid__cta { display: inline-block; margin-top: 12px; font-weight: 700; border-bottom: 2px solid var(--green-lt); padding-bottom: 2px; transition: color .2s; }
+.wid__cta:hover { color: var(--green-lt); }
 
 /* =========================================================
    SHOWS (tickets)
@@ -717,6 +744,7 @@ body.beat .hero__word--outline { -webkit-text-stroke-color: var(--green); }
 
   .about { grid-template-columns: 1fr; }
   .music { grid-template-columns: 1fr; }
+  .wid { grid-template-columns: 1fr; }
 
   .gallery { columns: 2; }
   .film--side { display: none; }
