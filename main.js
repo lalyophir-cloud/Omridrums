@@ -36,94 +36,13 @@
     el.innerHTML = bars;
   }
 
-  var DRUM_KIT_SVG =
-    '<svg class="kit" viewBox="0 0 420 380" role="img" aria-label="איור של מערכת תופים">' +
-      '<defs><pattern id="dots" width="7" height="7" patternUnits="userSpaceOnUse"><circle cx="3.5" cy="3.5" r="1.6" fill="currentColor"/></pattern></defs>' +
-      '<g fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">' +
-        // stands
-        '<path d="M45 150 V360 M25 360 L45 330 L65 360"/>' +
-        '<path d="M110 80 V360 M90 360 L110 330 L130 360"/>' +
-        '<path d="M330 95 V360 M310 360 L330 330 L350 360"/>' +
-        // cymbals
-        '<ellipse cx="110" cy="76" rx="70" ry="9" transform="rotate(-10 110 76)" fill="var(--paper)"/>' +
-        '<ellipse cx="330" cy="92" rx="74" ry="9" transform="rotate(8 330 92)" fill="var(--paper)"/>' +
-        '<ellipse cx="45" cy="146" rx="44" ry="6" fill="var(--paper)"/>' +
-        '<ellipse cx="45" cy="156" rx="44" ry="6" fill="var(--paper)"/>' +
-        // toms
-        '<path d="M130 140 V178 A40 10 0 0 0 210 178 V140" fill="var(--paper)"/><ellipse cx="170" cy="140" rx="40" ry="10" fill="var(--paper)"/>' +
-        '<path d="M220 140 V178 A40 10 0 0 0 300 178 V140" fill="var(--paper)"/><ellipse cx="260" cy="140" rx="40" ry="10" fill="var(--paper)"/>' +
-        // bass drum
-        '<circle cx="215" cy="262" r="96" fill="var(--paper)"/>' +
-        '<circle cx="215" cy="262" r="84" fill="url(#dots)" opacity=".28"/>' +
-        '<circle cx="215" cy="262" r="84"/>' +
-        '<path d="M150 352 L135 368 M280 352 L295 368"/>' +
-        // floor tom
-        '<path d="M300 205 V285 A52 13 0 0 0 404 285 V205" fill="var(--paper)"/><ellipse cx="352" cy="205" rx="52" ry="13" fill="var(--paper)"/>' +
-        '<path d="M308 285 L300 365 M396 285 L404 365"/>' +
-        // snare
-        '<path d="M48 205 V240 A55 14 0 0 0 158 240 V205" fill="var(--paper)"/><ellipse cx="103" cy="205" rx="55" ry="14" fill="var(--paper)"/>' +
-        '<path d="M103 254 V360 M83 360 L103 335 L123 360"/>' +
-        // sticks
-        '<path d="M70 120 L150 196 M150 112 L84 194" stroke-width="3.2"/>' +
-      '</g>' +
-      '<text x="215" y="276" text-anchor="middle" class="kit__logo">OMRI</text>' +
-    "</svg>";
-
-  // זרקורים מצוירים: יוצאים מעל השם ויורדים עד עמרי (מחושב לפי הגודל של המסך)
-  var BEAMS = [
-    { x: 0.16, to: 0.40, dur: 7, delay: 0 },
-    { x: 0.50, to: 0.50, dur: 9, delay: -3 },
-    { x: 0.84, to: 0.60, dur: 8, delay: -5 }
-  ];
-  function drawBeams() {
-    var fig = slot("hero-figure"), svg = $(".beams", fig), title = $(".hero__title");
-    if (!svg || !title) return;
-    var fr = fig.getBoundingClientRect(), tr = title.getBoundingClientRect();
-    var w = fr.width, ext = Math.max(0, fr.top - tr.top + (innerWidth <= 900 ? 30 : 62)), h = fr.height + ext;
-    var bottom = ext + fr.height * 0.93, top = 10, half = w * 0.085, blur = (w * 0.009).toFixed(1);
-    svg.style.top = -ext + "px";
-    svg.style.height = h + "px";
-    svg.setAttribute("viewBox", "0 0 " + w.toFixed(0) + " " + h.toFixed(0));
-    svg.innerHTML =
-      '<defs><linearGradient id="beam-g" x1="0" y1="0" x2="0" y2="1">' +
-        '<stop offset="0" stop-color="var(--green-lt)" stop-opacity=".9"/>' +
-        '<stop offset=".6" stop-color="var(--green-lt)" stop-opacity=".4"/>' +
-        '<stop offset="1" stop-color="var(--green-lt)" stop-opacity="0"/>' +
-      '</linearGradient>' +
-      '<filter id="beam-blur" x="-40%" y="-10%" width="180%" height="120%"><feGaussianBlur stdDeviation="' + blur + '"/></filter></defs>' +
-      BEAMS.map(function (b, i) {
-        var fx = w * b.x, bx = w * b.to, r = Math.max(10, w * 0.035);
-        return '<g class="beam" style="transform-origin:' + fx.toFixed(1) + "px " + top + "px;animation-duration:" + b.dur + "s;animation-delay:" + b.delay + 's">' +
-          '<path filter="url(#beam-blur)" d="M' + (fx - r * 0.6) + " " + top + " L" + (fx + r * 0.6) + " " + top +
-            " L" + (bx + half) + " " + bottom + " L" + (bx - half) + " " + bottom + 'Z"/>' +
-          '<ellipse cx="' + fx + '" cy="' + top + '" rx="' + r + '" ry="' + (r * 0.36) + '"/>' +
-        "</g>";
-      }).join("");
-  }
-
-
   /* ---------- HERO ---------- */
-
-  slot("hero-stats").innerHTML = (S.stats || []).map(function (s) {
-    return '<p><b>&lt;' + esc(s.num) + '&gt;</b> ' + esc(s.en) + "<br><span>" + esc(s.label) + "</span></p>";
-  }).join("");
-
-  slot("hero-figure").innerHTML = S.heroImage
-    ? '<img src="' + esc(S.heroImage) + '" alt="' + esc(S.name || "") + ' מתופף">'
-    : DRUM_KIT_SVG;
+  slot("hero-img").src = S.heroImage || "";
+  slot("hero-text").textContent = S.heroText || "";
 
   var PC = S.photoCredit;
   function creditLink(cls) {
     return PC ? '<a class="credit ' + cls + ' mono" href="' + esc(PC.url) + '" target="_blank" rel="noopener">Photo: ' + esc(PC.name) + "</a>" : "";
-  }
-  if (S.heroCutout) {
-    var fig = slot("hero-figure");
-    fig.classList.add("is-cutout");
-    fig.insertAdjacentHTML("afterbegin", '<svg class="beams" aria-hidden="true"></svg>');
-    drawBeams();
-    addEventListener("resize", drawBeams);
-    addEventListener("load", drawBeams);
-    if (document.fonts) document.fonts.ready.then(drawBeams);
   }
 
   /* ---------- MARQUEE ---------- */

@@ -11,7 +11,7 @@
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo+Black&family=Reenie+Beanie&family=Rubik:wght@400;500;700;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo+Black&family=Instrument+Serif:ital@0;1&family=Reenie+Beanie&family=Rubik:wght@400;500;700;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -46,30 +46,22 @@
 
   <main id="top">
     <!-- ===== HERO ===== -->
-    <section class="hero">
-      <div class="hero__stats mono" data-slot="hero-stats"></div>
-
-      <div class="hero__vertical mono" aria-hidden="true">PORTFOLIO / 2026 / LIVE &amp; STUDIO</div>
-
-      <h1 class="hero__title" aria-label="OMRI DRUMS">
-        <span class="hero__word hero__word--solid">OMRI</span>
-        <span class="hero__word hero__word--outline">DRUMS</span>
-      </h1>
-
-      <div class="hero__figure" data-slot="hero-figure"></div>
-
-      <div class="callout callout--a mono" aria-hidden="true">
-        <span class="callout__dot"></span><span class="callout__line"></span>
-        <span class="callout__txt">a. STICKS<br><b>5A / HICKORY</b></span>
+    <section class="intro">
+      <figure class="intro__photo">
+        <img data-slot="hero-img" alt="עמרי ברגר מתופף על הבמה, באור הזרקורים">
+      </figure>
+      <div class="intro__text">
+        <div class="intro__mark">
+          <span class="intro__logo" lang="en">Omri Berger</span>
+          <span class="intro__sub mono">DRUMS / TEL AVIV</span>
+        </div>
+        <p class="intro__para" data-slot="hero-text"></p>
+        <ul class="intro__list mono" aria-label="מה אני עושה">
+          <li>01 / Live shows</li><li>02 / Recordings</li><li>03 / Drum lessons</li>
+        </ul>
       </div>
-      <div class="callout callout--b mono" aria-hidden="true">
-        <span class="callout__dot"></span><span class="callout__line"></span>
-        <span class="callout__txt">b. TEMPO<br><b>&lt;120&gt; BPM</b></span>
-      </div>
-      <div class="callout callout--c mono" aria-hidden="true">
-        <span class="callout__dot"></span><span class="callout__line"></span>
-        <span class="callout__txt">c. STATUS<br><b>● AVAILABLE</b></span>
-      </div>
+      <h1 class="intro__name" lang="en"><span>Omri</span> <span>Berger</span></h1>
+      <a href="#about" class="intro__scroll mono">SCROLL ↓</a>
     </section>
 
     <!-- ===== MARQUEE ===== -->
