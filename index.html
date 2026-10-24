@@ -74,19 +74,11 @@
         <div class="pass-wrap reveal">
           <span class="pin pin--a mono"><i>a.</i> Portrait</span>
           <span class="pin pin--b mono"><i>b.</i> Description</span>
-          <span class="pin pin--c mono"><i>c.</i> Logo</span>
-          <span class="pin pin--d mono"><i>d.</i> Full body</span>
+          <span class="pin pin--d mono"><i>c.</i> Full body</span>
 
           <article class="pass" aria-label="כרטיס מתופף">
             <div class="pass__portrait" data-slot="portrait"></div>
             <div class="pass__info">
-              <div class="pass__head">
-                <svg class="pass__logo" viewBox="0 0 100 100" aria-hidden="true">
-                  <defs><path id="logo-circle" d="M50,50 m-36,0 a36,36 0 1,1 72,0 a36,36 0 1,1 -72,0"/></defs>
-                  <text class="pass__logo-stars"><textPath href="#logo-circle">✶ ✶ ✶ ✶ ✶ ✶ ✶ ✶ ✶ ✶ ✶ ✶ ✶ ✶</textPath></text>
-                  <text x="50" y="60" text-anchor="middle" class="pass__logo-txt">OD</text>
-                </svg>
-              </div>
               <dl class="pass__fields" data-slot="card"></dl>
               <div class="pass__foot">
                 <span class="pass__take">✶ TAKE <b>01</b> ✶</span>
@@ -100,11 +92,10 @@
 
         <div class="about__text reveal">
           <div class="about__paras" data-slot="about"></div>
+          <div class="about__stats" data-slot="about-stats"></div>
         </div>
       </div>
-      <div class="about__cymbal">
-        <div class="about__stats" data-slot="about-stats"></div>
-      </div>
+      <div class="about__cymbal" aria-hidden="true"></div>
     </section>
 
     <!-- ===== MUSIC ===== -->
