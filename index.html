@@ -11,7 +11,7 @@
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&family=Anton&family=Permanent+Marker&family=Rubik:wght@400;500;700;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo+Black&family=Reenie+Beanie&family=Rubik:wght@400;500;700;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -69,14 +69,6 @@
       <div class="callout callout--c mono" aria-hidden="true">
         <span class="callout__dot"></span><span class="callout__line"></span>
         <span class="callout__txt">c. STATUS<br><b>● AVAILABLE</b></span>
-      </div>
-
-      <div class="hero__bottom">
-        <div class="hero__intro">
-          <div class="barcode" data-barcode="OMRI-DRUMS-2026"></div>
-          <p class="hero__tagline" data-slot="tagline"></p>
-          <p class="hero__sub" data-slot="subline"></p>
-        </div>
       </div>
     </section>
 
@@ -157,9 +149,12 @@
         <figure class="wid__art reveal">
           <img src="images/whatido.jpg" alt="עמרי מתופף, הצללית שלו צבועה בלבן ובתוכה כתוב מה הוא עושה" loading="lazy">
           <div class="wid__words" aria-hidden="true">
-            <span class="w1">LiVE</span><span class="w2">sHoWs</span>
-            <span class="w3">RECORD<b>i</b>NGS</span>
-            <span class="w4">drum</span><span class="w5">LESS<b>O</b>NS</span>
+            <span class="w1">LiVe</span>
+            <span class="w2">SH<b>O</b>WS</span>
+            <span class="w3">rEc<b>o</b>rd</span>
+            <span class="w4">iNGS</span>
+            <span class="w5">dr<b>U</b>m</span>
+            <span class="w6">LeSS<i>o</i>NS</span>
           </div>
         </figure>
         <ol class="wid__list" data-slot="services"></ol>
@@ -189,9 +184,7 @@
       </header>
       <div class="contact-sheet">
         <div class="film mono" aria-hidden="true"><span>KODAK PORTRA 400</span><i>90 F11.0 &nbsp;×&nbsp; P80/2 120</i><span>KODAK PORTRA 400</span><i>90 F11.0 &nbsp;×&nbsp; P80/2 120</i></div>
-        <p class="hand gallery__sign" aria-hidden="true">Omri Berger</p>
         <div class="gallery" data-slot="gallery"></div>
-        <div class="film film--side mono" aria-hidden="true"><span>90 F11.0 &nbsp;×&nbsp; P80/2 120</span><b>50</b><span>90 F11.0 &nbsp;×&nbsp; P80/2 120</span></div>
       </div>
     </section>
 
@@ -209,27 +202,9 @@
     </section>
   </main>
 
-  <!-- ===== DRUM: hit to scroll ===== -->
-  <div class="drum-wrap">
-    <span class="drum-hint hand" aria-hidden="true">תופפו לגלילה ↓</span>
-    <button class="drum" type="button" aria-label="לחיצה על התוף: מעבר לחלק הבא">
-      <svg viewBox="0 0 120 120" aria-hidden="true">
-        <g class="drum__body">
-          <path d="M20 70 V96 A40 11 0 0 0 100 96 V70" class="drum__shell"/>
-          <path d="M28 76 L28 101 M44 79 L44 106 M60 80 L60 107 M76 79 L76 106 M92 76 L92 101" class="drum__lugs"/>
-          <ellipse cx="60" cy="70" rx="40" ry="11" class="drum__head"/>
-        </g>
-        <g class="drum__stick drum__stick--l"><line x1="10" y1="12" x2="47" y2="60"/><circle cx="47" cy="60" r="4"/></g>
-        <g class="drum__stick drum__stick--r"><line x1="110" y1="12" x2="73" y2="60"/><circle cx="73" cy="60" r="4"/></g>
-      </svg>
-    </button>
-    <button class="drum-mute mono" type="button" aria-pressed="false" aria-label="השתקת צליל">SOUND ON</button>
-  </div>
-
   <footer class="footer mono">
     <span>© <span data-slot="year"></span> OMRI DRUMS</span>
     <span class="footer__mid" data-slot="credit"></span>
-    <span class="footer__keys">✶ אפשר לתופף במקלדת: A S D F</span>
     <a href="#top">BACK TO TOP ↑</a>
   </footer>
 
@@ -241,6 +216,5 @@
 
   <script src="content.js"></script>
   <script src="main.js"></script>
-  <script src="drum.js"></script>
 </body>
 </html>

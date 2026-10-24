@@ -22,8 +22,8 @@ window.SITE = {
     { num: "30+", en: "SESSIONS", label: "הקלטות באולפן" }
   ],
 
-  // מופיעים בפס הכתום שזז
-  genres: ["ROCK", "FUNK", "JAZZ", "POP", "FUSION", "הופעות חיות", "סשנים", "אולפן"],
+  // מופיעים בפס הירוק שזז (באנגלית)
+  genres: ["ROCK", "FUNK", "JAZZ", "POP", "FUSION", "LIVE SHOWS", "STUDIO SESSIONS", "DRUM LESSONS"],
 
   about: {
     portrait: "images/portrait.jpg",  // "images/portrait.jpg"  תמונת פנים / פרופיל
@@ -91,9 +91,6 @@ window.SITE = {
     { src: "images/through-phone.jpg",caption: "מהקהל",           shape: "" },
     { src: "images/focus-bw.jpg",     caption: "פוקוס",           shape: "pill" }
   ],
-
-  // פתקים בכתב יד שמפוזרים בין התמונות בגלריה
-  galleryNotes: ["Live @ Gagarin TLV"],
 
   // "מה אני עושה". link: "whatsapp" = כפתור לוואטסאפ, או לינק רגיל, או ריק
   services: [

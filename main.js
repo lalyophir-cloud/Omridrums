@@ -103,8 +103,6 @@
 
 
   /* ---------- HERO ---------- */
-  slot("tagline").textContent = S.tagline || "";
-  slot("subline").textContent = S.subline || "";
 
   slot("hero-stats").innerHTML = (S.stats || []).map(function (s) {
     return '<p><b>&lt;' + esc(s.num) + '&gt;</b> ' + esc(s.en) + "<br><span>" + esc(s.label) + "</span></p>";
@@ -127,7 +125,6 @@
     addEventListener("load", drawBeams);
     if (document.fonts) document.fonts.ready.then(drawBeams);
   }
-  if (S.heroImage && PC) slot("hero-figure").insertAdjacentHTML("beforeend", creditLink("credit--hero"));
 
   /* ---------- MARQUEE ---------- */
   var chunk = (S.genres || []).map(function (g) { return "<span>" + esc(g) + "</span><i>✶</i>"; }).join("");
@@ -232,34 +229,22 @@
     slot("shows-photo").innerHTML =
       '<button type="button" class="shows-photo__frame" data-full="' + esc(SP.src) + '" data-cap="' + esc(SP.caption || "") + '">' +
         '<img src="' + esc(SP.src) + '" alt="' + esc(SP.caption || "") + '" loading="lazy"></button>' +
-      '<figcaption><span class="hand">' + esc(SP.caption || "") + "</span>" + (SP.credit ? creditLink("") : "") + "</figcaption>";
+      '<figcaption><span class="shows-photo__cap">' + esc(SP.caption || "") + "</span>" + (SP.credit ? creditLink("") : "") + "</figcaption>";
   } else {
     slot("shows-photo").remove();
   }
 
   /* ---------- GALLERY ---------- */
-  var TILT = [-3, 2.2, -1.4, 3, -2.4, 1.6, -2, 2.6, -1, 3.2, -2.8, 1.2];
-  var notes = S.galleryNotes || [];
-  var shots = (S.gallery || []).map(function (g, i) {
-    var label = "FRAME " + pad(i + 1);
-    var inner = media(g.src, label, g.caption);
-    var tag = g.src ? "button" : "div";
+  slot("gallery").innerHTML = (S.gallery || []).filter(function (g) { return g.src; }).map(function (g, i) {
     var cap = (g.caption || "") + (g.credit && PC ? "  /  Photo: " + PC.name : "");
-    var extra = g.src ? ' type="button" data-full="' + esc(g.src) + '" data-cap="' + esc(cap) + '"' : "";
-    return '<figure class="shot reveal' + (g.shape ? " shot--" + esc(g.shape) : "") + '" style="--r:' + TILT[i % TILT.length] + 'deg">' +
-      "<" + tag + ' class="shot__frame"' + extra + ">" + inner + "</" + tag + ">" +
-      '<figcaption class="hand"><span>' + pad(i + 1) + "</span> " + esc(g.caption || "") + "</figcaption>" +
-      (g.credit ? creditLink("credit--print") : "") +
+    return '<figure class="shot reveal">' +
+      '<button type="button" class="shot__frame" data-full="' + esc(g.src) + '" data-cap="' + esc(cap) + '">' +
+        '<img src="' + esc(g.src) + '" alt="' + esc(g.caption || "") + '" loading="lazy">' +
+        '<figcaption><span class="mono">' + pad(i + 1) + "</span> " + esc(g.caption || "") +
+          (g.credit && PC ? '<small class="mono">Photo: ' + esc(PC.name) + "</small>" : "") + "</figcaption>" +
+      "</button>" +
     "</figure>";
-  });
-  // פתק אחרי כל תמונה שלישית
-  var out = [];
-  shots.forEach(function (s, i) {
-    out.push(s);
-    var n = notes[Math.floor(i / 3)];
-    if (i % 3 === 2 && n) out.push('<p class="note hand reveal" style="--r:' + TILT[(i + 3) % TILT.length] * 1.5 + 'deg">' + esc(n) + "</p>");
-  });
-  slot("gallery").innerHTML = out.join("");
+  }).join("");
 
   var box = $(".lightbox");
   document.addEventListener("click", function (e) {
