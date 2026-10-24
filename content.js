@@ -79,7 +79,10 @@ window.SITE = {
     { src: "images/live-red.jpg",     caption: "על הבמה",         shape: "" },
     { src: "images/live-green.jpg",   caption: "רגע לפני הפזמון", shape: "pill" },
     { src: "images/stage-view.jpg",   caption: "מאחורי התופים",   shape: "wide" },
-    { src: "images/arms-up-bw.jpg",   caption: "סוף ההופעה",      shape: "tall" }
+    { src: "images/arms-up-bw.jpg",   caption: "סוף ההופעה",      shape: "tall" },
+    { src: "images/pearl-kit-bw.jpg", caption: "מאחורי ה-Pearl",  shape: "tall" },
+    { src: "images/through-phone.jpg",caption: "מהקהל",           shape: "" },
+    { src: "images/focus-bw.jpg",     caption: "פוקוס",           shape: "pill" }
   ],
 
   contact: {
