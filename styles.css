@@ -350,6 +350,28 @@ body.beat .beam { opacity: 1; }
 .rings { display: flex; margin-top: 34px; }
 .rings i { width: 56px; height: 56px; border: 1px solid currentColor; border-radius: 50%; margin-inline-end: -16px; opacity: .6; }
 
+/* ---------- photo backgrounds (vintage drum catalog look) ---------- */
+.section--cymbal {
+  background: #fbf8f1 url("images/bg-cymbal.jpg") center bottom / min(100%, 1400px) auto no-repeat;
+  padding-bottom: clamp(260px, 52vw, 760px);
+}
+.section--cymbal .about__paras p { color: rgba(13, 13, 13, .72); }
+.section--cymbal .about__paras .lead { color: var(--ink); }
+.section--cymbal .about__stats { border-top-color: rgba(13, 13, 13, .2); }
+.section--cymbal .about__stats b { color: var(--green); }
+.section--cymbal .pin { background: #fbf8f1; border-color: var(--ink); color: var(--ink); }
+.section--cymbal .pin i { color: var(--green); }
+.section--cymbal .pin::after { background: var(--ink); }
+.section--cymbal .pass { background: #fff; box-shadow: 0 30px 50px rgba(0, 0, 0, .14); }
+
+.section--snares { background: #edeeeb; isolation: isolate; }
+.section--snares::before {
+  content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none;
+  background:
+    linear-gradient(to bottom, rgba(237, 238, 235, .62), rgba(237, 238, 235, .8) 40%, #edeeeb 68%),
+    url("images/bg-snares.jpg") center 120px / min(100%, 1300px) auto no-repeat;
+}
+
 /* =========================================================
    MUSIC
    ========================================================= */
