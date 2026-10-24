@@ -85,6 +85,7 @@
   function creditLink(cls) {
     return PC ? '<a class="credit ' + cls + ' mono" href="' + esc(PC.url) + '" target="_blank" rel="noopener">Photo: ' + esc(PC.name) + "</a>" : "";
   }
+  if (S.heroCutout) slot("hero-figure").classList.add("is-cutout");
   if (S.heroImage && PC) slot("hero-figure").insertAdjacentHTML("beforeend", creditLink("credit--hero"));
 
   /* ---------- MARQUEE ---------- */
@@ -175,7 +176,6 @@
   }).filter(function (s) { return !isNaN(s.d); });
 
   var upcoming = shows.filter(function (s) { return s.d >= today; }).sort(function (a, b) { return a.d - b.d; });
-  var past = shows.filter(function (s) { return s.d < today; }).sort(function (a, b) { return b.d - a.d; });
 
   slot("upcoming").innerHTML = upcoming.length ? upcoming.map(function (s, i) {
     var cta = s.ticketUrl
@@ -194,12 +194,6 @@
     "</article>";
   }).join("") : '<p class="tickets__empty">אין הופעות קרובות כרגע. שווה לקפוץ לפה שוב בקרוב.</p>';
 
-  slot("past-count").textContent = "(" + past.length + ")";
-  slot("past").innerHTML = past.map(function (s) {
-    return "<li><span class=\"mono\">" + pad(s.d.getDate()) + "." + pad(s.d.getMonth() + 1) + "." + String(s.d.getFullYear()).slice(2) +
-      "</span><b>" + esc(s.venue) + "</b><span>" + esc(s.city) + "</span><span class=\"past__proj\">" + esc(s.project || "") + "</span></li>";
-  }).join("");
-  if (!past.length) $(".past").hidden = true;
 
   /* ---------- GALLERY ---------- */
   var TILT = [-3, 2.2, -1.4, 3, -2.4, 1.6, -2, 2.6, -1, 3.2, -2.8, 1.2];
@@ -221,7 +215,7 @@
   shots.forEach(function (s, i) {
     out.push(s);
     var n = notes[Math.floor(i / 3)];
-    if (i % 3 === 1 && n) out.push('<p class="note hand reveal" style="--r:' + TILT[(i + 3) % TILT.length] * 1.5 + 'deg">' + esc(n) + "</p>");
+    if (i % 3 === 2 && n) out.push('<p class="note hand reveal" style="--r:' + TILT[(i + 3) % TILT.length] * 1.5 + 'deg">' + esc(n) + "</p>");
   });
   slot("gallery").innerHTML = out.join("");
 

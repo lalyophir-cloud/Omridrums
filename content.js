@@ -12,7 +12,8 @@ window.SITE = {
 
   // תמונה ראשית. הכי טוב PNG בלי רקע (גזור), למשל: "images/hero.png"
   // אם ריק, יוצג איור של מערכת תופים
-  heroImage: "images/spotlights.jpg",
+  heroImage: "images/hero-cutout.webp",
+  heroCutout: true,  // true = תמונה גזורה בלי רקע (בלי מסגרת)
 
   // מספרים שמופיעים בראש העמוד ובכרטיס
   stats: [
@@ -63,14 +64,11 @@ window.SITE = {
   },
 
   // הופעות. התאריך בפורמט שנה-חודש-יום.
-  // האתר מחלק לבד ל"קרובות" ו"קודמות" לפי התאריך של היום.
+  // הופעות שהתאריך שלהן עבר יורדות מהאתר לבד.
   shows: [
     { date: "2026-11-13", time: "21:30", venue: "הבארבי",       city: "תל אביב", project: "עם הלהקה",       ticketUrl: "" },
     { date: "2026-11-27", time: "22:00", venue: "לבונטין 7",     city: "תל אביב", project: "ערב ג'אז",       ticketUrl: "" },
-    { date: "2026-12-18", time: "21:00", venue: "זאפה",          city: "ירושלים", project: "אורח מיוחד",     ticketUrl: "" },
-    { date: "2026-09-05", time: "21:00", venue: "האוזן השלישית", city: "תל אביב", project: "השקת סינגל",     ticketUrl: "" },
-    { date: "2026-07-22", time: "20:30", venue: "פסטיבל קיץ",    city: "חיפה",    project: "במה פתוחה",      ticketUrl: "" },
-    { date: "2026-05-10", time: "22:00", venue: "הגדה השמאלית",  city: "תל אביב", project: "פאנק נייט",      ticketUrl: "" }
+    { date: "2026-12-18", time: "21:00", venue: "זאפה",          city: "ירושלים", project: "אורח מיוחד",     ticketUrl: "" }
   ],
 
   // גלריה. shape אפשרי: "pill" (עגלגל), "tall" (גבוה), "wide" (רחב), "" (רגיל)
@@ -91,7 +89,7 @@ window.SITE = {
   ],
 
   // פתקים בכתב יד שמפוזרים בין התמונות בגלריה
-  galleryNotes: ["עוד שיר!!", "Live @ Gagarin TLV", "ידיים למעלה ✶", "sticks up, always"],
+  galleryNotes: ["Live @ Gagarin TLV"],
 
   contact: {
     email: "Omriberger123@gmail.com",
