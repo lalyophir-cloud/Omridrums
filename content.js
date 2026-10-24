@@ -12,7 +12,7 @@ window.SITE = {
 
   // תמונה ראשית. הכי טוב PNG בלי רקע (גזור), למשל: "images/hero.png"
   // אם ריק, יוצג איור של מערכת תופים
-  heroImage: "",
+  heroImage: "images/spotlights.jpg",
 
   // מספרים שמופיעים בראש העמוד ובכרטיס
   stats: [
@@ -25,15 +25,15 @@ window.SITE = {
   genres: ["ROCK", "FUNK", "JAZZ", "POP", "FUSION", "הופעות חיות", "סשנים", "אולפן"],
 
   about: {
-    portrait: "",  // "images/portrait.jpg"  תמונת פנים / פרופיל
-    fullBody: "",  // "images/full.jpg"      תמונה לאורך, גוף מלא
+    portrait: "images/portrait.jpg",  // "images/portrait.jpg"  תמונת פנים / פרופיל
+    fullBody: "images/arms-up-bw.jpg",  // "images/full.jpg"      תמונה לאורך, גוף מלא
     paragraphs: [
       "היי, אני עמרי. מתופף מתל אביב שמנגן כבר יותר מעשר שנים.",
       "גדלתי על רוק ופאנק, ובדרך התאהבתי בג'אז ובגרוב. היום אני מנגן עם כמה הרכבים, בהופעות חיות ובאולפן, ותמיד מחפש את הסאונד הזה שגורם לקהל לזוז.",
       "פה תמצאו הקלטות, הופעות קרובות ודרך מהירה לדבר איתי."
     ],
     card: [
-      { en: "Name",   label: "שם",     value: "עמרי" },
+      { en: "Name",   label: "שם",     value: "עמרי ברגר" },
       { en: "Role",   label: "תפקיד",  value: "מתופף / כלי הקשה" },
       { en: "Style",  label: "סגנון",  value: "רוק, פאנק, פיוז'ן" },
       { en: "Based",  label: "בסיס",   value: "תל אביב" },
@@ -56,7 +56,7 @@ window.SITE = {
     platforms: [
       { name: "Spotify",   url: "" },
       { name: "YouTube",   url: "" },
-      { name: "Instagram", url: "" }
+      { name: "Instagram", url: "https://instagram.com/omri_berger" }
     ]
   },
 
@@ -73,19 +73,18 @@ window.SITE = {
 
   // גלריה. shape אפשרי: "pill" (עגלגל), "tall" (גבוה), "wide" (רחב), "" (רגיל)
   gallery: [
-    { src: "", caption: "בארבי, 2026",   shape: "tall" },
-    { src: "", caption: "בחזרות",        shape: "pill" },
-    { src: "", caption: "סאונדצ'ק",      shape: "wide" },
-    { src: "", caption: "סשן באולפן",    shape: "" },
-    { src: "", caption: "מקלות",         shape: "pill" },
-    { src: "", caption: "על הבמה",       shape: "wide" },
-    { src: "", caption: "אחרי ההופעה",   shape: "" },
-    { src: "", caption: "הסט אפ",        shape: "tall" }
+    { src: "images/spotlights.jpg",   caption: "באור הזרקורים",   shape: "tall" },
+    { src: "images/sticks-bw.jpg",    caption: "מקלות למעלה",     shape: "pill" },
+    { src: "images/band-gagarin.jpg", caption: "גגארין, תל אביב", shape: "wide" },
+    { src: "images/live-red.jpg",     caption: "על הבמה",         shape: "" },
+    { src: "images/live-green.jpg",   caption: "רגע לפני הפזמון", shape: "pill" },
+    { src: "images/stage-view.jpg",   caption: "מאחורי התופים",   shape: "wide" },
+    { src: "images/arms-up-bw.jpg",   caption: "סוף ההופעה",      shape: "tall" }
   ],
 
   contact: {
     email: "omri@example.com",
-    instagram: "",  // לינק מלא לפרופיל, למשל https://instagram.com/...
+    instagram: "https://instagram.com/omri_berger",
     // מספר בפורמט בינלאומי בלי + ובלי 0 בהתחלה. לדוגמה: 972501234567
     whatsapp: ""
   }

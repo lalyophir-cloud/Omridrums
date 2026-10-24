@@ -185,7 +185,12 @@ body.menu-open .topbar { background: transparent; border-color: transparent; col
   width: min(42vw, 52vh, 540px); transform: translate(-50%, -50%);
   animation: float 6s ease-in-out infinite;
 }
-.hero__figure img { width: 100%; filter: grayscale(1) contrast(1.15); }
+.hero__figure:has(img) { width: min(30vw, 46vh, 400px); top: 54%; }
+.hero__figure img {
+  width: 100%; aspect-ratio: 4 / 5; object-fit: cover; object-position: 50% 40%;
+  border: 1.5px solid var(--ink); transform: rotate(-3deg);
+  box-shadow: 14px 14px 0 var(--orange), 0 40px 60px rgba(0, 0, 0, .25);
+}
 .kit { width: 100%; color: var(--ink); filter: drop-shadow(0 30px 30px rgba(0, 0, 0, .12)); }
 .kit__logo { font-family: var(--f-display); font-size: 34px; fill: var(--orange); letter-spacing: .04em; }
 @keyframes float { 50% { transform: translate(-50%, calc(-50% - 12px)); } }
@@ -521,6 +526,7 @@ button.shot__frame { cursor: zoom-in; }
   .hero__title { grid-row: 2; margin-top: 4vh; }
   .hero__word { font-size: 31vw; }
   .hero__figure { position: relative; grid-row: 3; left: auto; top: auto; transform: none; width: min(78vw, 420px); margin: -14vw auto 0; animation: none; }
+  .hero__figure:has(img) { width: min(66vw, 340px); top: auto; margin-top: -10vw; }
   .callout { display: none; }
   .hero__bottom { grid-row: 4; margin-top: 18px; }
   .badge { width: 104px; height: 104px; }
