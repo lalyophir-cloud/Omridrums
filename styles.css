@@ -199,14 +199,12 @@ body.menu-open .topbar { background: transparent; border-color: transparent; col
 }
 .hero__figure.is-cutout img { position: relative; z-index: 1; }
 .hero__figure.is-cutout .credit--hero { bottom: 10px; left: auto; right: -110px; transform: none; z-index: 3; }
-.beams { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 0; overflow: visible; mix-blend-mode: multiply; }
+.beams { position: absolute; left: 0; top: 0; width: 100%; height: 100%; z-index: 0; overflow: visible; mix-blend-mode: multiply; }
 .beam path { fill: url(#beam-g); }
 .beam ellipse { fill: var(--ink); }
 .beam { transform-box: view-box; opacity: .85; transition: opacity .12s; }
-.beam--1 { transform-origin: 345px 30px; animation: sway 7s ease-in-out infinite alternate; }
-.beam--2 { transform-origin: 762px 20px; animation: sway 9s ease-in-out -3s infinite alternate-reverse; }
-.beam--3 { transform-origin: 1084px 46px; animation: sway 8s ease-in-out -5s infinite alternate; }
-@keyframes sway { from { transform: rotate(-5deg); } to { transform: rotate(5deg); } }
+.beam { animation: sway 8s ease-in-out infinite alternate; }
+@keyframes sway { from { transform: rotate(-4deg); } to { transform: rotate(4deg); } }
 body.beat .beam { opacity: 1; }
 .kit { width: 100%; color: var(--ink); filter: drop-shadow(0 30px 30px rgba(0, 0, 0, .12)); }
 .kit__logo { font-family: var(--f-display); font-size: 34px; fill: var(--green); letter-spacing: .04em; }

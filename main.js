@@ -69,19 +69,38 @@
       '<text x="215" y="276" text-anchor="middle" class="kit__logo">OMRI</text>' +
     "</svg>";
 
-  // זרקורים מצוירים מאחורי התמונה הגזורה (באותן קואורדינטות של התמונה)
-  var BEAMS_SVG =
-    '<svg class="beams" viewBox="0 0 1191 1396" aria-hidden="true">' +
+  // זרקורים מצוירים: יוצאים מעל השם ויורדים עד עמרי (מחושב לפי הגודל של המסך)
+  var BEAMS = [
+    { x: 0.16, to: 0.40, dur: 7, delay: 0 },
+    { x: 0.50, to: 0.50, dur: 9, delay: -3 },
+    { x: 0.84, to: 0.60, dur: 8, delay: -5 }
+  ];
+  function drawBeams() {
+    var fig = slot("hero-figure"), svg = $(".beams", fig), title = $(".hero__title");
+    if (!svg || !title) return;
+    var fr = fig.getBoundingClientRect(), tr = title.getBoundingClientRect();
+    var w = fr.width, ext = Math.max(0, fr.top - tr.top + (innerWidth <= 900 ? 8 : 34)), h = fr.height + ext;
+    var bottom = ext + fr.height * 0.93, top = 10, half = w * 0.085, blur = (w * 0.009).toFixed(1);
+    svg.style.top = -ext + "px";
+    svg.style.height = h + "px";
+    svg.setAttribute("viewBox", "0 0 " + w.toFixed(0) + " " + h.toFixed(0));
+    svg.innerHTML =
       '<defs><linearGradient id="beam-g" x1="0" y1="0" x2="0" y2="1">' +
         '<stop offset="0" stop-color="var(--green-lt)" stop-opacity=".9"/>' +
-        '<stop offset=".55" stop-color="var(--green-lt)" stop-opacity=".35"/>' +
+        '<stop offset=".6" stop-color="var(--green-lt)" stop-opacity=".4"/>' +
         '<stop offset="1" stop-color="var(--green-lt)" stop-opacity="0"/>' +
       '</linearGradient>' +
-        '<filter id="beam-blur" x="-30%" y="-10%" width="160%" height="120%"><feGaussianBlur stdDeviation="14"/></filter></defs>' +
-      '<g class="beam beam--1"><path filter="url(#beam-blur)" d="M330 34 L360 34 L660 1300 L380 1300Z"/><ellipse cx="345" cy="30" rx="34" ry="12"/></g>' +
-      '<g class="beam beam--2"><path filter="url(#beam-blur)" d="M748 24 L776 24 L760 1300 L470 1300Z"/><ellipse cx="762" cy="20" rx="34" ry="12"/></g>' +
-      '<g class="beam beam--3"><path filter="url(#beam-blur)" d="M1070 50 L1098 50 L900 1300 L650 1300Z"/><ellipse cx="1084" cy="46" rx="34" ry="12"/></g>' +
-    "</svg>";
+      '<filter id="beam-blur" x="-40%" y="-10%" width="180%" height="120%"><feGaussianBlur stdDeviation="' + blur + '"/></filter></defs>' +
+      BEAMS.map(function (b, i) {
+        var fx = w * b.x, bx = w * b.to, r = Math.max(10, w * 0.035);
+        return '<g class="beam" style="transform-origin:' + fx.toFixed(1) + "px " + top + "px;animation-duration:" + b.dur + "s;animation-delay:" + b.delay + 's">' +
+          '<path filter="url(#beam-blur)" d="M' + (fx - r * 0.6) + " " + top + " L" + (fx + r * 0.6) + " " + top +
+            " L" + (bx + half) + " " + bottom + " L" + (bx - half) + " " + bottom + 'Z"/>' +
+          '<ellipse cx="' + fx + '" cy="' + top + '" rx="' + r + '" ry="' + (r * 0.36) + '"/>' +
+        "</g>";
+      }).join("");
+  }
+
 
   /* ---------- HERO ---------- */
   slot("tagline").textContent = S.tagline || "";
@@ -102,7 +121,11 @@
   if (S.heroCutout) {
     var fig = slot("hero-figure");
     fig.classList.add("is-cutout");
-    fig.insertAdjacentHTML("afterbegin", BEAMS_SVG);
+    fig.insertAdjacentHTML("afterbegin", '<svg class="beams" aria-hidden="true"></svg>');
+    drawBeams();
+    addEventListener("resize", drawBeams);
+    addEventListener("load", drawBeams);
+    if (document.fonts) document.fonts.ready.then(drawBeams);
   }
   if (S.heroImage && PC) slot("hero-figure").insertAdjacentHTML("beforeend", creditLink("credit--hero"));
 
