@@ -381,13 +381,12 @@ body.beat .beam { opacity: 1; }
 
 
 /* ---------- photo backgrounds (vintage drum catalog look) ---------- */
-.section--cymbal { background: #fbf8f1; padding-bottom: calc(min(100vw, 1400px) * .7); isolation: isolate; }
-/* cymbal photo as the section backdrop: text flows over its empty top, stats land just above the cymbal */
+.section--cymbal { background: #fbf8f1; isolation: isolate; overflow: hidden; }
+/* cymbal photo sits behind the whole section, no extra space */
 .about__cymbal {
-  position: absolute; z-index: -1; left: 50%; bottom: 0; transform: translateX(-50%);
-  width: min(100vw, 1400px); aspect-ratio: 1200 / 940;
+  position: absolute; z-index: -1; inset: 0; opacity: .5;
   background: url("images/bg-cymbal.jpg") center bottom / 100% auto no-repeat;
-  -webkit-mask-image: linear-gradient(to bottom, transparent, #000 12%); mask-image: linear-gradient(to bottom, transparent, #000 12%);
+  -webkit-mask-image: linear-gradient(to bottom, transparent 15%, #000 55%); mask-image: linear-gradient(to bottom, transparent 15%, #000 55%);
 }
 .section--cymbal .about__stats { border: 0; margin-top: clamp(30px, 5vw, 60px); text-align: center; }
 .section--cymbal .about__stats div { padding: 0; align-items: center; }
