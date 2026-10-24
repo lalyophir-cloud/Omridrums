@@ -69,6 +69,19 @@
       '<text x="215" y="276" text-anchor="middle" class="kit__logo">OMRI</text>' +
     "</svg>";
 
+  // זרקורים מצוירים מאחורי התמונה הגזורה (באותן קואורדינטות של התמונה)
+  var BEAMS_SVG =
+    '<svg class="beams" viewBox="0 0 1191 1396" aria-hidden="true">' +
+      '<defs><linearGradient id="beam-g" x1="0" y1="0" x2="0" y2="1">' +
+        '<stop offset="0" stop-color="var(--green-lt)" stop-opacity=".9"/>' +
+        '<stop offset=".55" stop-color="var(--green-lt)" stop-opacity=".35"/>' +
+        '<stop offset="1" stop-color="var(--green-lt)" stop-opacity="0"/>' +
+      '</linearGradient></defs>' +
+      '<g class="beam beam--1"><path d="M330 34 L360 34 L660 1300 L380 1300Z"/><ellipse cx="345" cy="30" rx="34" ry="12"/></g>' +
+      '<g class="beam beam--2"><path d="M748 24 L776 24 L760 1300 L470 1300Z"/><ellipse cx="762" cy="20" rx="34" ry="12"/></g>' +
+      '<g class="beam beam--3"><path d="M1070 50 L1098 50 L900 1300 L650 1300Z"/><ellipse cx="1084" cy="46" rx="34" ry="12"/></g>' +
+    "</svg>";
+
   /* ---------- HERO ---------- */
   slot("tagline").textContent = S.tagline || "";
   slot("subline").textContent = S.subline || "";
@@ -85,7 +98,11 @@
   function creditLink(cls) {
     return PC ? '<a class="credit ' + cls + ' mono" href="' + esc(PC.url) + '" target="_blank" rel="noopener">Photo: ' + esc(PC.name) + "</a>" : "";
   }
-  if (S.heroCutout) slot("hero-figure").classList.add("is-cutout");
+  if (S.heroCutout) {
+    var fig = slot("hero-figure");
+    fig.classList.add("is-cutout");
+    fig.insertAdjacentHTML("afterbegin", BEAMS_SVG);
+  }
   if (S.heroImage && PC) slot("hero-figure").insertAdjacentHTML("beforeend", creditLink("credit--hero"));
 
   /* ---------- MARQUEE ---------- */
