@@ -394,14 +394,22 @@ body.beat .beam { opacity: 1; }
 .about__stats b { font-family: var(--f-display); font-weight: 400; font-size: clamp(36px, 4vw, 56px); line-height: 1; color: var(--green-lt); direction: ltr; text-align: right; }
 .about__stats span { font-size: 13px; opacity: .7; }
 
-.rings { display: flex; margin-top: 34px; }
-.rings i { width: 56px; height: 56px; border: 1px solid currentColor; border-radius: 50%; margin-inline-end: -16px; opacity: .6; }
 
 /* ---------- photo backgrounds (vintage drum catalog look) ---------- */
-.section--cymbal {
-  background: #fbf8f1 url("images/bg-cymbal.jpg") center bottom / min(100%, 1400px) auto no-repeat;
-  padding-bottom: clamp(260px, 52vw, 760px);
+.section--cymbal { background: #fbf8f1; padding-bottom: 0; }
+.about__cymbal {
+  position: relative; margin: clamp(90px, 10vw, 150px) calc(var(--gutter) * -1) 0;
+  aspect-ratio: 1200 / 940; background: url("images/bg-cymbal.jpg") center bottom / 100% auto no-repeat;
 }
+/* the numbers sit on the cymbal, between its edges */
+.section--cymbal .about__stats {
+  position: absolute; left: 9%; right: 12%; bottom: 90%; margin: 0; border: 0;
+  grid-template-columns: repeat(3, 1fr); text-align: center;
+}
+.section--cymbal .about__stats div { padding: 0; align-items: center; }
+.section--cymbal .about__stats div:nth-child(2) { transform: translateY(-38%); }
+.section--cymbal .about__stats b { text-align: center; font-size: clamp(30px, 5vw, 76px); }
+.section--cymbal .about__stats span { font-size: clamp(11px, 1.1vw, 15px); color: rgba(13, 13, 13, .7); opacity: 1; }
 .section--cymbal .about__paras p { color: rgba(13, 13, 13, .72); }
 .section--cymbal .about__paras .lead { color: var(--ink); }
 .section--cymbal .about__stats { border-top-color: rgba(13, 13, 13, .2); }
