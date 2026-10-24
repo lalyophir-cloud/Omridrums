@@ -37,8 +37,19 @@
   }
 
   /* ---------- HERO ---------- */
-  slot("hero-img").src = S.heroImage || "";
-  slot("hero-text").textContent = S.heroText || "";
+  // כל שורה בפתיחה נמתחת בדיוק לרוחב של הפוסטר
+  var posterType = $(".poster__type");
+  function fitPoster() {
+    if (!posterType) return;
+    var w = posterType.clientWidth;
+    $$(".poster__line", posterType).forEach(function (l) {
+      l.style.fontSize = "100px";
+      l.style.fontSize = (100 * w / l.scrollWidth).toFixed(2) + "px";
+    });
+  }
+  fitPoster();
+  addEventListener("resize", fitPoster);
+  if (document.fonts) document.fonts.ready.then(fitPoster);
 
   var PC = S.photoCredit;
   function creditLink(cls) {

@@ -11,7 +11,7 @@
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo+Black&family=Instrument+Serif:ital@0;1&family=Reenie+Beanie&family=Rubik:wght@400;500;700;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo+Black&family=Londrina+Solid:wght@900&family=Reenie+Beanie&family=Rubik:wght@400;500;700;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -46,22 +46,17 @@
 
   <main id="top">
     <!-- ===== HERO ===== -->
-    <section class="intro">
-      <figure class="intro__photo">
-        <img data-slot="hero-img" alt="עמרי ברגר מתופף על הבמה, באור הזרקורים">
-      </figure>
-      <div class="intro__text">
-        <div class="intro__mark">
-          <span class="intro__logo" lang="en">Omri Berger</span>
-          <span class="intro__sub mono">DRUMS / TEL AVIV</span>
-        </div>
-        <p class="intro__para" data-slot="hero-text"></p>
-        <ul class="intro__list mono" aria-label="מה אני עושה">
-          <li>01 / Live shows</li><li>02 / Recordings</li><li>03 / Drum lessons</li>
-        </ul>
+    <section class="poster">
+      <div class="poster__inner">
+        <h1 class="poster__type" lang="en" aria-label="Omri Berger, drums">
+          <span class="poster__line">OMRI</span>
+          <span class="poster__line">BERGER</span>
+          <span class="poster__line">DRUMS</span>
+        </h1>
+        <img class="poster__cut" src="images/hero-omri.webp" alt="עמרי ברגר עם מקלות למעלה">
       </div>
-      <h1 class="intro__name" lang="en"><span>Omri</span> <span>Berger</span></h1>
-      <a href="#about" class="intro__scroll mono">SCROLL ↓</a>
+      <p class="poster__side poster__side--a mono" lang="en">LIVE SHOWS / RECORDINGS / DRUM LESSONS</p>
+      <p class="poster__side poster__side--b mono" lang="en">TEL AVIV, ISRAEL / 2026</p>
     </section>
 
     <!-- ===== MARQUEE ===== -->
