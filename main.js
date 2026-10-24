@@ -162,7 +162,7 @@
 
   slot("upcoming").innerHTML = upcoming.length ? upcoming.map(function (s, i) {
     var cta = s.ticketUrl
-      ? '<a class="btn btn--orange" href="' + esc(s.ticketUrl) + '" target="_blank" rel="noopener">כרטיסים ↗</a>'
+      ? '<a class="btn btn--green" href="' + esc(s.ticketUrl) + '" target="_blank" rel="noopener">כרטיסים ↗</a>'
       : '<span class="btn btn--ghost">כרטיסים בקרוב</span>';
     return '<article class="ticket reveal">' +
       '<div class="ticket__date"><b>' + pad(s.d.getDate()) + "." + pad(s.d.getMonth() + 1) + "</b>" +
@@ -215,7 +215,7 @@
   if (C.email) links.push({ k: "EMAIL", he: "מייל", v: C.email, href: "mailto:" + C.email });
   var ig = (C.instagram || "").replace(/^https?:\/\/(www\.)?instagram\.com\//, "").replace(/\/.*$/, "");
   links.push({ k: "INSTAGRAM", he: "אינסטגרם", v: ig ? "@" + ig : "בקרוב", href: C.instagram || "", ext: true });
-  links.push({ k: "WHATSAPP", he: "וואטסאפ", v: C.whatsapp ? "שלחו הודעה" : "בקרוב", href: C.whatsapp ? "https://wa.me/" + C.whatsapp.replace(/\D/g, "") : "", ext: true });
+  links.push({ k: "WHATSAPP", he: "וואטסאפ", v: C.whatsapp ? C.whatsapp.replace(/^972(\d{2})(\d+)$/, "0$1-$2") : "בקרוב", href: C.whatsapp ? "https://wa.me/" + C.whatsapp.replace(/\D/g, "") : "", ext: true });
 
   slot("contact").innerHTML = links.map(function (l, i) {
     var attrs = l.href ? 'href="' + esc(l.href) + '"' + (l.ext ? ' target="_blank" rel="noopener"' : "") : 'aria-disabled="true"';

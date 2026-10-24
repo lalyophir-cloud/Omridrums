@@ -56,7 +56,7 @@ window.SITE = {
     platforms: [
       { name: "Spotify",   url: "" },
       { name: "YouTube",   url: "" },
-      { name: "Instagram", url: "https://instagram.com/omri_berger" }
+      { name: "Instagram", url: "https://instagram.com/Omri_berger" }
     ]
   },
 
@@ -86,9 +86,9 @@ window.SITE = {
   ],
 
   contact: {
-    email: "omri@example.com",
-    instagram: "https://instagram.com/omri_berger",
+    email: "Omriberger123@gmail.com",
+    instagram: "https://instagram.com/Omri_berger",
     // מספר בפורמט בינלאומי בלי + ובלי 0 בהתחלה. לדוגמה: 972501234567
-    whatsapp: ""
+    whatsapp: "972545379987"
   }
 };
