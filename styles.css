@@ -200,7 +200,7 @@ body.menu-open .topbar { background: transparent; border-color: transparent; col
 .hero__figure.is-cutout img { position: relative; z-index: 1; }
 .hero__figure.is-cutout .credit--hero { bottom: 10px; left: auto; right: -110px; transform: none; z-index: 3; }
 .beams { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 0; overflow: visible; mix-blend-mode: multiply; }
-.beam path { fill: url(#beam-g); filter: blur(10px); }
+.beam path { fill: url(#beam-g); }
 .beam ellipse { fill: var(--ink); }
 .beam { transform-box: view-box; opacity: .85; transition: opacity .12s; }
 .beam--1 { transform-origin: 345px 30px; animation: sway 7s ease-in-out infinite alternate; }
@@ -208,7 +208,6 @@ body.menu-open .topbar { background: transparent; border-color: transparent; col
 .beam--3 { transform-origin: 1084px 46px; animation: sway 8s ease-in-out -5s infinite alternate; }
 @keyframes sway { from { transform: rotate(-5deg); } to { transform: rotate(5deg); } }
 body.beat .beam { opacity: 1; }
-body.beat .beam path { filter: blur(6px) brightness(1.15); }
 .kit { width: 100%; color: var(--ink); filter: drop-shadow(0 30px 30px rgba(0, 0, 0, .12)); }
 .kit__logo { font-family: var(--f-display); font-size: 34px; fill: var(--green); letter-spacing: .04em; }
 @keyframes float { 50% { transform: translate(-50%, calc(-50% - 12px)); } }
@@ -692,8 +691,15 @@ body.beat .hero__word--outline { -webkit-text-stroke-color: var(--green); }
   .hero__word { font-size: 31vw; }
   .hero__figure { position: relative; grid-row: 3; left: auto; top: auto; transform: none; width: min(78vw, 420px); margin: -14vw auto 0; animation: none; }
   .hero__figure:has(img) { width: min(66vw, 340px); top: auto; margin-top: -10vw; margin-bottom: 26px; }
-  .hero__figure.is-cutout { grid-row: 4; width: min(92vw, 400px); bottom: auto; margin: 10px auto -28px; transform: none; }
-  .hero:has(.is-cutout) .hero__bottom { grid-row: 3; margin-top: 22px; }
+  .hero:has(.is-cutout) { grid-template-rows: auto auto 1fr; }
+  .hero__figure.is-cutout { grid-row: 3; grid-column: 1; align-self: end; width: min(94vw, 420px); bottom: auto; margin: -34vw auto -28px; transform: none; }
+  .hero:has(.is-cutout) .hero__bottom { grid-row: 3; grid-column: 1; align-self: start; justify-content: flex-start; margin-top: 4vw; z-index: 3; pointer-events: none; }
+  .hero:has(.is-cutout) .hero__intro { max-width: 46vw; }
+  .hero:has(.is-cutout) .hero__intro .barcode, .hero:has(.is-cutout) .hero__sub { display: none; }
+  .hero:has(.is-cutout) .hero__tagline {
+    background: var(--paper); border: 1.5px solid var(--ink); padding: 6px 10px; font-size: 20px;
+    box-shadow: 4px 4px 0 var(--green); transform: rotate(3deg); display: inline-block;
+  }
   .hero__figure.is-cutout .credit--hero { right: 0; bottom: 36px; }
   .callout { display: none; }
   .hero__bottom { grid-row: 4; margin-top: 18px; }

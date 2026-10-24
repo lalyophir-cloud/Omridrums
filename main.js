@@ -76,10 +76,11 @@
         '<stop offset="0" stop-color="var(--green-lt)" stop-opacity=".9"/>' +
         '<stop offset=".55" stop-color="var(--green-lt)" stop-opacity=".35"/>' +
         '<stop offset="1" stop-color="var(--green-lt)" stop-opacity="0"/>' +
-      '</linearGradient></defs>' +
-      '<g class="beam beam--1"><path d="M330 34 L360 34 L660 1300 L380 1300Z"/><ellipse cx="345" cy="30" rx="34" ry="12"/></g>' +
-      '<g class="beam beam--2"><path d="M748 24 L776 24 L760 1300 L470 1300Z"/><ellipse cx="762" cy="20" rx="34" ry="12"/></g>' +
-      '<g class="beam beam--3"><path d="M1070 50 L1098 50 L900 1300 L650 1300Z"/><ellipse cx="1084" cy="46" rx="34" ry="12"/></g>' +
+      '</linearGradient>' +
+        '<filter id="beam-blur" x="-30%" y="-10%" width="160%" height="120%"><feGaussianBlur stdDeviation="14"/></filter></defs>' +
+      '<g class="beam beam--1"><path filter="url(#beam-blur)" d="M330 34 L360 34 L660 1300 L380 1300Z"/><ellipse cx="345" cy="30" rx="34" ry="12"/></g>' +
+      '<g class="beam beam--2"><path filter="url(#beam-blur)" d="M748 24 L776 24 L760 1300 L470 1300Z"/><ellipse cx="762" cy="20" rx="34" ry="12"/></g>' +
+      '<g class="beam beam--3"><path filter="url(#beam-blur)" d="M1070 50 L1098 50 L900 1300 L650 1300Z"/><ellipse cx="1084" cy="46" rx="34" ry="12"/></g>' +
     "</svg>";
 
   /* ---------- HERO ---------- */
