@@ -308,9 +308,7 @@ body.menu-open .topbar { background: transparent; border-color: transparent; col
 .pass__full .ph__label { writing-mode: vertical-rl; }
 
 .pass__info { padding-inline: 18px 4px; display: flex; flex-direction: column; border-inline-start: 1px dashed var(--ink); margin-inline-start: 14px; }
-.pass__head { display: flex; justify-content: space-between; align-items: flex-start; gap: 10px; direction: ltr; }
-.pass__title { font-family: var(--f-mono); font-size: clamp(22px, 2.4vw, 32px); font-weight: 700; letter-spacing: .02em; line-height: 1; }
-.pass__code { font-size: 8.5px; margin-top: 4px; opacity: .8; }
+.pass__head { display: flex; justify-content: flex-end; align-items: flex-start; gap: 10px; direction: ltr; }
 .pass__logo { width: 60px; height: 60px; flex: none; direction: ltr; }
 .pass__logo-stars { font-size: 9px; fill: var(--ink); letter-spacing: 2px; }
 .pass__logo-txt { font-family: var(--f-display); font-size: 30px; fill: var(--ink); }
@@ -344,7 +342,10 @@ body.menu-open .topbar { background: transparent; border-color: transparent; col
 /* =========================================================
    MUSIC
    ========================================================= */
-.music { display: grid; grid-template-columns: minmax(0, 1.8fr) minmax(0, 1fr); gap: clamp(24px, 4vw, 48px); margin-bottom: clamp(24px, 4vw, 48px); }
+.music { display: grid; grid-template-columns: minmax(0, 440px) minmax(0, 1fr); align-items: center; gap: clamp(28px, 5vw, 80px); margin-bottom: clamp(40px, 6vw, 80px); }
+.music .record { margin-bottom: 0; }
+.music__intro { max-width: 520px; }
+.music__featured { margin-bottom: clamp(24px, 4vw, 48px); }
 .record { position: relative; width: 100%; max-width: 440px; aspect-ratio: 1.55 / 1; margin-bottom: 28px; }
 .record__sleeve {
   position: absolute; inset-block: 0; inset-inline-start: 0; aspect-ratio: 1; z-index: 2; overflow: hidden;
@@ -373,13 +374,8 @@ body.menu-open .topbar { background: transparent; border-color: transparent; col
 .record__label .ph { position: absolute; background: var(--green); }
 .record__hole { position: absolute; left: 50%; top: 50%; width: 10px; height: 10px; margin: -5px 0 0 -5px; border-radius: 50%; background: var(--paper); }
 
-.music__note { font-size: clamp(20px, 2vw, 26px); font-weight: 700; line-height: 1.2; margin-bottom: 18px; }
+.music__note { font-size: clamp(24px, 2.8vw, 38px); font-weight: 900; line-height: 1.15; margin-bottom: 18px; }
 .platforms { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 22px; }
-.spotify iframe { width: 100%; border: 0; border-radius: 12px; display: block; }
-.spotify__empty {
-  height: 220px; border: 1.5px dashed var(--ink); display: flex; flex-direction: column;
-  align-items: center; justify-content: center; gap: 6px; opacity: .6;
-}
 
 .videos { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: clamp(14px, 2vw, 24px); }
 .video__frame {

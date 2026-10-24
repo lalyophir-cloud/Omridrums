@@ -76,7 +76,6 @@
           <div class="barcode" data-barcode="OMRI-DRUMS-2026"></div>
           <p class="hero__tagline" data-slot="tagline"></p>
           <p class="hero__sub" data-slot="subline"></p>
-          <a href="#music" class="btn btn--black">לשמוע אותי <span class="mono">///↗</span></a>
         </div>
       </div>
     </section>
@@ -103,10 +102,6 @@
             <div class="pass__portrait" data-slot="portrait"></div>
             <div class="pass__info">
               <div class="pass__head">
-                <div>
-                  <p class="pass__title">PASS CARD</p>
-                  <p class="mono pass__code">CARD CODE: ODR2026TLV / DRUMMER</p>
-                </div>
                 <svg class="pass__logo" viewBox="0 0 100 100" aria-hidden="true">
                   <defs><path id="logo-circle" d="M50,50 m-36,0 a36,36 0 1,1 72,0 a36,36 0 1,1 -72,0"/></defs>
                   <text class="pass__logo-stars"><textPath href="#logo-circle">✶ ✶ ✶ ✶ ✶ ✶ ✶ ✶ ✶ ✶ ✶ ✶ ✶ ✶</textPath></text>
@@ -140,15 +135,14 @@
         <span class="sec-meta mono">/ RECORDINGS<br>/ VIDEOS</span>
       </header>
 
-      <div class="music">
-        <div class="music__featured reveal" data-slot="featured"></div>
-        <div class="music__side reveal">
-          <div class="record" data-slot="record"></div>
-          <p class="music__note">הקלטות, סרטונים וקטעים מהופעות. לוחצים ומנגנים.</p>
+      <div class="music reveal">
+        <div class="record" data-slot="record"></div>
+        <div class="music__intro">
+          <p class="music__note">הקלטות, סרטונים וקטעים מהופעות. לוחצים על סרטון ומנגנים.</p>
           <div class="platforms" data-slot="platforms"></div>
-          <div class="spotify" data-slot="spotify"></div>
         </div>
       </div>
+      <div class="music__featured reveal" data-slot="featured"></div>
       <div class="videos" data-slot="videos"></div>
     </section>
 

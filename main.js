@@ -153,19 +153,9 @@
     btn.classList.add("is-playing");
   });
 
-  slot("platforms").innerHTML = (M.platforms || []).map(function (p) {
-    var attrs = p.url ? 'href="' + esc(p.url) + '" target="_blank" rel="noopener"' : 'aria-disabled="true"';
-    return '<a class="chip" ' + attrs + ">" + esc(p.name) + ' <span>↗</span></a>';
+  slot("platforms").innerHTML = (M.platforms || []).filter(function (p) { return p.url; }).map(function (p) {
+    return '<a class="chip" href="' + esc(p.url) + '" target="_blank" rel="noopener">' + esc(p.name) + ' <span>↗</span></a>';
   }).join("");
-
-  // ממיר לינק רגיל של ספוטיפיי ללינק הטמעה
-  var sp = (M.spotify || "").match(/open\.spotify\.com\/(?:intl-[a-z]+\/)?(track|album|playlist|artist|episode|show)\/([A-Za-z0-9]+)/);
-  if (sp) {
-    slot("spotify").innerHTML = '<iframe src="https://open.spotify.com/embed/' + sp[1] + "/" + sp[2] +
-      '?theme=0" height="352" loading="lazy" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" title="Spotify"></iframe>';
-  } else {
-    slot("spotify").innerHTML = '<div class="spotify__empty mono"><span>SPOTIFY PLAYER</span><span>הנגן יופיע כאן</span></div>';
-  }
 
   /* ---------- SHOWS ---------- */
   var DAYS = ["ראשון", "שני", "שלישי", "רביעי", "חמישי", "שישי", "שבת"];

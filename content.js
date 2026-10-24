@@ -54,10 +54,8 @@ window.SITE = {
     ],
     // העטיפה של התקליט שיוצא מהצד (התמונה במרכז התקליט = תמונת הפרופיל)
     cover: "images/live-red.jpg",
-    // לינק לפלייליסט / אמן / שיר בספוטיפיי. ריק = לא יוצג נגן
-    spotify: "",
+    // כפתורים לפלטפורמות. כפתור בלי לינק לא מוצג
     platforms: [
-      { name: "Spotify",   url: "" },
       { name: "YouTube",   url: "" },
       { name: "Instagram", url: "https://instagram.com/Omri_berger" }
     ]
