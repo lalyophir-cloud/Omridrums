@@ -241,8 +241,6 @@
     return '<figure class="shot">' +
       '<button type="button" class="shot__frame" data-full="' + esc(g.src) + '" data-cap="' + esc(cap) + '">' +
         '<img src="' + esc(g.src) + '" alt="' + esc(g.caption || "") + '" loading="lazy">' +
-        '<figcaption><span class="mono">' + pad(i + 1) + "</span> " + esc(g.caption || "") +
-          (g.credit && PC ? '<small class="mono">Photo: ' + esc(PC.name) + "</small>" : "") + "</figcaption>" +
       "</button>" +
       '<span class="shot__no mono" aria-hidden="true">' + (i + 1) + "A ▸</span>" +
     "</figure>";
