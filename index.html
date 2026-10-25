@@ -11,7 +11,7 @@
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo+Black&family=Londrina+Solid:wght@900&family=Reenie+Beanie&family=Rubik:wght@400;500;700;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo+Black&family=Instrument+Serif:ital@0;1&family=Londrina+Solid:wght@900&family=Reenie+Beanie&family=Rubik:wght@400;500;700;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -164,26 +164,21 @@
     </section>
 
     <!-- ===== GALLERY ===== -->
-    <section class="section section--dark" id="gallery">
+    <section class="section section--paper" id="gallery">
       <header class="sec-head reveal">
         <span class="sec-num">05</span>
         <h2 class="sec-title"><span class="en">FRAMES</span><span class="he">גלריה</span></h2>
         <span class="sec-meta mono">/ ON STAGE<br>/ BACKSTAGE</span>
       </header>
-      <div class="viewer">
-        <div class="viewer__stage">
-          <span class="viewer__paper" aria-hidden="true"></span>
-          <figure class="viewer__frame">
-            <img class="viewer__img" alt="">
-            <span class="viewer__tape" aria-hidden="true"></span>
-          </figure>
-          <button type="button" class="viewer__nav viewer__nav--prev" aria-label="התמונה הקודמת">→</button>
-          <button type="button" class="viewer__nav viewer__nav--next" aria-label="התמונה הבאה">←</button>
-        </div>
-        <div class="viewer__bar">
-          <p class="viewer__cap"><span class="viewer__count mono"></span> <span class="viewer__text"></span> <span class="viewer__credit mono"></span></p>
-        </div>
-        <div class="viewer__thumbs" data-slot="gallery" role="tablist" aria-label="תמונות"></div>
+      <div class="collage" data-slot="gallery">
+        <svg class="collage__deco collage__burst collage__burst--a" viewBox="0 0 100 100" aria-hidden="true"><polygon points="50,0 58,32 88,12 68,40 100,50 68,60 88,88 58,68 50,100 42,68 12,88 32,60 0,50 32,40 12,12 42,32"/></svg>
+        <svg class="collage__deco collage__burst collage__burst--b" viewBox="0 0 100 100" aria-hidden="true"><polygon points="50,0 56,30 76,6 66,36 96,22 72,46 100,56 70,62 90,88 60,72 52,100 44,72 18,92 32,64 0,58 28,46 6,22 36,34 26,6 46,30"/></svg>
+        <svg class="collage__deco collage__scribble collage__scribble--a" viewBox="0 0 200 100" aria-hidden="true"><path d="M20 55 C30 15 170 5 185 45 C195 80 60 95 25 70 C5 55 60 20 120 22 C170 25 190 60 150 78"/></svg>
+        <svg class="collage__deco collage__scribble collage__scribble--b" viewBox="0 0 120 120" aria-hidden="true"><path d="M10 110 L10 70 M10 110 L50 110 M80 10 L112 10 L112 42 M100 4 L118 24 M118 4 L100 24"/></svg>
+        <svg class="collage__deco collage__scribble collage__scribble--c" viewBox="0 0 200 100" aria-hidden="true"><path d="M10 60 C25 20 60 90 80 45 C95 15 120 85 140 40 C155 15 175 70 190 35 M15 75 C40 40 70 95 95 60 C115 35 140 95 165 55"/></svg>
+        <span class="collage__deco collage__tag collage__tag--a" lang="en">LIVE</span>
+        <span class="collage__deco collage__tag collage__tag--b" lang="en">TEL AVIV</span>
+        <span class="collage__deco collage__tag collage__tag--c" lang="en">OMRI BERGER</span>
       </div>
     </section>
 

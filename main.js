@@ -165,54 +165,34 @@
   }
 
   /* ---------- GALLERY ---------- */
-  // גלריה: תמונה גדולה אחת + רצועת תמונות קטנות לבחירה
+  // גלריה כקולאז': תמונות עקומות שחופפות זו לזו. לחיצה פותחת בגדול ובצבע
   var G = (S.gallery || []).filter(function (g) { return g.src; });
-  var vImg = $(".viewer__img"), vIdx = 0;
-  slot("gallery").innerHTML = G.map(function (g, i) {
-    return '<button type="button" class="viewer__thumb" role="tab" aria-label="' + esc(g.caption || "תמונה " + (i + 1)) + '" data-i="' + i + '">' +
-      '<img src="' + esc(g.src) + '" alt="" loading="lazy"></button>';
-  }).join("");
-  var thumbs = $$(".viewer__thumb");
-  function show(i, dir) {
-    if (!G.length) return;
-    vIdx = (i + G.length) % G.length;
-    var g = G[vIdx];
-    vImg.classList.remove("is-in");
-    vImg.style.setProperty("--from", (dir || 0) * 30 + "px");
-    void vImg.offsetWidth;
-    vImg.src = g.src;
-    vImg.alt = g.caption || "";
-    vImg.classList.add("is-in");
-    $(".viewer__count").textContent = pad(vIdx + 1) + " / " + pad(G.length);
-    $(".viewer__text").textContent = g.caption || "";
-    $(".viewer__credit").textContent = g.credit && PC ? "Photo: " + PC.name : "";
-    thumbs.forEach(function (t, k) {
-      t.setAttribute("aria-selected", String(k === vIdx));
-      if (k === vIdx) {
-        var bar = t.parentNode, tr = t.getBoundingClientRect(), br = bar.getBoundingClientRect();
-        bar.scrollBy({ left: (tr.left + tr.width / 2) - (br.left + br.width / 2), behavior: "smooth" });
-      }
+  // [עמודה, רוחב, שורה, גובה, סיבוב] על גריד של 12 עמודות (מחשב) / 6 (נייד)
+  var LAYOUT_D = [[1,5,1,6,-3],[5,4,2,7,4],[8,5,1,5,-2],[1,4,7,6,3],[4,5,8,5,-4],[9,4,6,7,2],[2,5,13,6,-2],
+                  [6,4,12,7,5],[9,4,13,5,-3],[1,4,19,5,2],[4,5,18,6,-3],[8,5,18,6,3],[2,4,24,6,-4],[6,6,23,7,2]];
+  function cell(i, mobile) {
+    if (!mobile) {
+      var L = LAYOUT_D[i % LAYOUT_D.length], off = Math.floor(i / LAYOUT_D.length) * 30;
+      return [L[0], L[1], L[2] + off, L[3], L[4]];
+    }
+    return [i % 2 ? 2 : 1, 5, 1 + i * 5, 7, i % 2 ? 3 : -3];
+  }
+  var collage = slot("gallery");
+  collage.insertAdjacentHTML("beforeend", G.map(function (g, i) {
+    var cap = (g.caption || "") + (g.credit && PC ? "  /  Photo: " + PC.name : "");
+    return '<button type="button" class="cl-shot" data-i="' + i + '" data-full="' + esc(g.src) + '" data-cap="' + esc(cap) + '" aria-label="' + esc(g.caption || "") + '">' +
+      '<img src="' + esc(g.src) + '" alt="' + esc(g.caption || "") + '" loading="lazy"></button>';
+  }).join(""));
+  var clMq = matchMedia("(max-width: 640px)");
+  function layoutCollage() {
+    $$(".cl-shot", collage).forEach(function (b, i) {
+      var c = cell(i, clMq.matches);
+      b.style.gridArea = c[2] + " / " + c[0] + " / span " + c[3] + " / span " + c[1];
+      b.style.setProperty("--r", c[4] + "deg");
     });
   }
-  thumbs.forEach(function (t) { t.addEventListener("click", function () { show(+t.getAttribute("data-i")); }); });
-  $(".viewer__nav--prev").addEventListener("click", function () { show(vIdx - 1, -1); });
-  $(".viewer__nav--next").addEventListener("click", function () { show(vIdx + 1, 1); });
-  $(".viewer").addEventListener("keydown", function (e) {
-    if (e.key === "ArrowLeft") show(vIdx + 1, 1);
-    if (e.key === "ArrowRight") show(vIdx - 1, -1);
-  });
-  // החלקה בנייד
-  var sx = null;
-  $(".viewer__stage").addEventListener("touchstart", function (e) { sx = e.touches[0].clientX; }, { passive: true });
-  $(".viewer__stage").addEventListener("touchend", function (e) {
-    if (sx === null) return;
-    var dx = e.changedTouches[0].clientX - sx; sx = null;
-    if (Math.abs(dx) > 40) show(vIdx + (dx > 0 ? 1 : -1), dx > 0 ? 1 : -1);
-  });
-  vImg.addEventListener("load", function () {
-    $(".viewer__frame").classList.toggle("is-tall", vImg.naturalHeight > vImg.naturalWidth);
-  });
-  show(0);
+  layoutCollage();
+  if (clMq.addEventListener) clMq.addEventListener("change", layoutCollage);
 
   var box = $(".lightbox");
   document.addEventListener("click", function (e) {
