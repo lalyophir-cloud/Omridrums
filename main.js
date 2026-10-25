@@ -165,30 +165,54 @@
   }
 
   /* ---------- GALLERY ---------- */
-  // גלריה כרצועות פילם: התמונות מתחלקות בין 3 רצועות (2 בנייד)
-  var shots = (S.gallery || []).filter(function (g) { return g.src; }).map(function (g, i) {
-    var cap = (g.caption || "") + (g.credit && PC ? "  /  Photo: " + PC.name : "");
-    return '<figure class="shot">' +
-      '<button type="button" class="shot__frame" data-full="' + esc(g.src) + '" data-cap="' + esc(cap) + '">' +
-        '<img src="' + esc(g.src) + '" alt="' + esc(g.caption || "") + '" loading="lazy">' +
-      "</button>" +
-      '<span class="shot__no mono" aria-hidden="true">' + (i + 1) + "A ▸</span>" +
-    "</figure>";
-  });
-  var stripsMq = matchMedia("(max-width: 640px)"), stripsN = 0;
-  function layoutStrips() {
-    var n = stripsMq.matches ? 2 : 3;
-    if (n === stripsN) return;
-    stripsN = n;
-    var cols = [];
-    for (var k = 0; k < n; k++) cols.push([]);
-    shots.forEach(function (s, i) { cols[i % n].push(s); });
-    slot("gallery").innerHTML = cols.map(function (c, k) {
-      return '<div class="strip reveal is-in"><span class="strip__edge mono" aria-hidden="true">KODAK 400 TX  ' + (k + 1) + "</span>" + c.join("") + "</div>";
-    }).join("");
+  // גלריה: תמונה גדולה אחת + רצועת תמונות קטנות לבחירה
+  var G = (S.gallery || []).filter(function (g) { return g.src; });
+  var vImg = $(".viewer__img"), vIdx = 0;
+  slot("gallery").innerHTML = G.map(function (g, i) {
+    return '<button type="button" class="viewer__thumb" role="tab" aria-label="' + esc(g.caption || "תמונה " + (i + 1)) + '" data-i="' + i + '">' +
+      '<img src="' + esc(g.src) + '" alt="" loading="lazy"></button>';
+  }).join("");
+  var thumbs = $$(".viewer__thumb");
+  function show(i, dir) {
+    if (!G.length) return;
+    vIdx = (i + G.length) % G.length;
+    var g = G[vIdx];
+    vImg.classList.remove("is-in");
+    vImg.style.setProperty("--from", (dir || 0) * 30 + "px");
+    void vImg.offsetWidth;
+    vImg.src = g.src;
+    vImg.alt = g.caption || "";
+    vImg.classList.add("is-in");
+    $(".viewer__count").textContent = pad(vIdx + 1) + " / " + pad(G.length);
+    $(".viewer__text").textContent = g.caption || "";
+    $(".viewer__credit").textContent = g.credit && PC ? "Photo: " + PC.name : "";
+    thumbs.forEach(function (t, k) {
+      t.setAttribute("aria-selected", String(k === vIdx));
+      if (k === vIdx) {
+        var bar = t.parentNode, tr = t.getBoundingClientRect(), br = bar.getBoundingClientRect();
+        bar.scrollBy({ left: (tr.left + tr.width / 2) - (br.left + br.width / 2), behavior: "smooth" });
+      }
+    });
   }
-  layoutStrips();
-  if (stripsMq.addEventListener) stripsMq.addEventListener("change", layoutStrips);
+  thumbs.forEach(function (t) { t.addEventListener("click", function () { show(+t.getAttribute("data-i")); }); });
+  $(".viewer__nav--prev").addEventListener("click", function () { show(vIdx - 1, -1); });
+  $(".viewer__nav--next").addEventListener("click", function () { show(vIdx + 1, 1); });
+  $(".viewer").addEventListener("keydown", function (e) {
+    if (e.key === "ArrowLeft") show(vIdx + 1, 1);
+    if (e.key === "ArrowRight") show(vIdx - 1, -1);
+  });
+  // החלקה בנייד
+  var sx = null;
+  $(".viewer__stage").addEventListener("touchstart", function (e) { sx = e.touches[0].clientX; }, { passive: true });
+  $(".viewer__stage").addEventListener("touchend", function (e) {
+    if (sx === null) return;
+    var dx = e.changedTouches[0].clientX - sx; sx = null;
+    if (Math.abs(dx) > 40) show(vIdx + (dx > 0 ? 1 : -1), dx > 0 ? 1 : -1);
+  });
+  vImg.addEventListener("load", function () {
+    $(".viewer__frame").classList.toggle("is-tall", vImg.naturalHeight > vImg.naturalWidth);
+  });
+  show(0);
 
   var box = $(".lightbox");
   document.addEventListener("click", function (e) {

@@ -164,15 +164,26 @@
     </section>
 
     <!-- ===== GALLERY ===== -->
-    <section class="section" id="gallery">
+    <section class="section section--dark" id="gallery">
       <header class="sec-head reveal">
         <span class="sec-num">05</span>
         <h2 class="sec-title"><span class="en">FRAMES</span><span class="he">גלריה</span></h2>
         <span class="sec-meta mono">/ ON STAGE<br>/ BACKSTAGE</span>
       </header>
-      <div class="contact-sheet">
-        <div class="film mono" aria-hidden="true"><span>KODAK PORTRA 400</span><i>90 F11.0 &nbsp;×&nbsp; P80/2 120</i><span>KODAK PORTRA 400</span><i>90 F11.0 &nbsp;×&nbsp; P80/2 120</i></div>
-        <div class="gallery" data-slot="gallery"></div>
+      <div class="viewer">
+        <div class="viewer__stage">
+          <span class="viewer__paper" aria-hidden="true"></span>
+          <figure class="viewer__frame">
+            <img class="viewer__img" alt="">
+            <span class="viewer__tape" aria-hidden="true"></span>
+          </figure>
+          <button type="button" class="viewer__nav viewer__nav--prev" aria-label="התמונה הקודמת">→</button>
+          <button type="button" class="viewer__nav viewer__nav--next" aria-label="התמונה הבאה">←</button>
+        </div>
+        <div class="viewer__bar">
+          <p class="viewer__cap"><span class="viewer__count mono"></span> <span class="viewer__text"></span> <span class="viewer__credit mono"></span></p>
+        </div>
+        <div class="viewer__thumbs" data-slot="gallery" role="tablist" aria-label="תמונות"></div>
       </div>
     </section>
 

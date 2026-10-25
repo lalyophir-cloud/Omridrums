@@ -76,16 +76,20 @@ window.SITE = {
   photoCredit: { name: "@eilonbphoto", url: "https://instagram.com/eilonbphoto" },
 
   gallery: [
-    { src: "images/spotlights.jpg",   caption: "באור הזרקורים",   shape: "tall", credit: true },
-    { src: "images/sticks-bw.jpg",    caption: "מקלות למעלה",     shape: "pill", credit: true },
-    { src: "images/band-gagarin.jpg", caption: "גגארין, תל אביב", shape: "wide", credit: true },
-    { src: "images/live-red.jpg",     caption: "על הבמה",         shape: "", credit: true },
-    { src: "images/live-green.jpg",   caption: "רגע לפני הפזמון", shape: "pill", credit: true },
-    { src: "images/stage-view.jpg",   caption: "מאחורי התופים",   shape: "wide", credit: true },
-    { src: "images/arms-up-bw.jpg",   caption: "סוף ההופעה",      shape: "tall", credit: true },
-    { src: "images/pearl-kit-bw.jpg", caption: "מאחורי ה-Pearl",  shape: "tall" },
-    { src: "images/through-phone.jpg",caption: "מהקהל",           shape: "" },
-    { src: "images/focus-bw.jpg",     caption: "פוקוס",           shape: "pill" }
+    { src: "images/g-crowd.jpg",       caption: "ארקטיק קרטיב, גגארין" },
+    { src: "images/g-offbit.jpg",      caption: "הופעה באוויר הפתוח" },
+    { src: "images/spotlights.jpg",    caption: "באור הזרקורים",   credit: true },
+    { src: "images/g-clap.jpg",        caption: "בין השירים" },
+    { src: "images/band-gagarin.jpg",  caption: "גגארין, תל אביב", credit: true },
+    { src: "images/g-bw-side.jpg",     caption: "מהצד של הבמה" },
+    { src: "images/live-red.jpg",      caption: "על הבמה",         credit: true },
+    { src: "images/sticks-bw.jpg",     caption: "מקלות למעלה",     credit: true },
+    { src: "images/live-green.jpg",    caption: "רגע לפני הפזמון", credit: true },
+    { src: "images/stage-view.jpg",    caption: "מאחורי התופים",   credit: true },
+    { src: "images/arms-up-bw.jpg",    caption: "סוף ההופעה",      credit: true },
+    { src: "images/pearl-kit-bw.jpg",  caption: "מאחורי ה-Pearl" },
+    { src: "images/through-phone.jpg", caption: "מהקהל" },
+    { src: "images/focus-bw.jpg",      caption: "פוקוס" }
   ],
 
   // "מה אני עושה". link: "whatsapp" = כפתור לוואטסאפ, או לינק רגיל, או ריק
