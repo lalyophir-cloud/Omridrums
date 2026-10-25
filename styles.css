@@ -402,6 +402,39 @@ body.beat .beam { opacity: 1; }
 
 
 /* =========================================================
+   FEATURE PHOTO (raw energy / torn paper collage)
+   ========================================================= */
+.feature { position: relative; background: var(--ink); color: var(--paper); padding: clamp(70px, 9vw, 130px) var(--gutter) clamp(80px, 10vw, 150px); overflow: hidden; }
+.feature__head { position: relative; z-index: 2; max-width: 1180px; margin: 0 auto; display: grid; grid-template-columns: 1fr auto; align-items: end; gap: 10px 30px; }
+.feature__title { grid-column: 1 / -1; }
+.feature__title {
+  margin: 0; display: flex; align-items: center; justify-content: center; gap: .04em; direction: ltr;
+  font-family: "Londrina Solid", var(--f-display); font-weight: 900; font-size: clamp(76px, 16vw, 250px); line-height: .85;
+}
+.feature__star { width: .62em; height: .62em; fill: var(--green-lt); flex: none; margin: 0 -.06em; animation: spin 18s linear infinite; }
+.feature__side { grid-column: 2; grid-row: 2; max-width: 360px; font-size: 15px; line-height: 1.5; opacity: .8; direction: ltr; text-align: left; margin-top: 14px; }
+.feature__meta { grid-column: 1; grid-row: 2; opacity: .6; justify-self: start; }
+.feature__frame { position: relative; max-width: 1180px; margin: 0 auto; padding-top: clamp(40px, 5vw, 70px); }
+.feature__paper {
+  position: absolute; z-index: 0; inset: 3% -3% -6% -2%; background: var(--green);
+  clip-path: polygon(0% 9%, 7% 2%, 15% 7%, 26% 0%, 37% 6%, 49% 1%, 61% 8%, 72% 2%, 84% 7%, 93% 0%, 100% 6%, 98% 22%, 100% 37%, 97% 52%, 100% 68%, 98% 84%, 100% 100%, 88% 95%, 76% 100%, 63% 94%, 50% 100%, 38% 95%, 25% 100%, 13% 94%, 2% 100%, 3% 84%, 0% 68%, 2% 52%, 0% 36%, 3% 21%);
+  transform: rotate(1.8deg);
+}
+.feature__frame img {
+  position: relative; z-index: 1; width: 100%; display: block; transform: rotate(-1.5deg);
+  box-shadow: 0 30px 60px rgba(0, 0, 0, .5);
+}
+.feature__tape {
+  position: absolute; z-index: 2; top: calc(clamp(40px, 5vw, 70px) - 16px); left: 46%; width: 170px; height: 38px;
+  background: rgba(232, 228, 214, .78); transform: rotate(-3deg); box-shadow: 0 2px 4px rgba(0, 0, 0, .25);
+}
+.feature__card {
+  position: absolute; z-index: 2; left: 4%; bottom: -22px; background: var(--paper); color: var(--ink);
+  padding: 14px 18px; font-family: "Archivo Black", var(--f-display); font-size: clamp(16px, 1.8vw, 24px); line-height: 1.05;
+  transform: rotate(-4deg); box-shadow: 0 12px 24px rgba(0, 0, 0, .4); direction: ltr; text-align: left;
+}
+
+/* =========================================================
    MUSIC
    ========================================================= */
 .music { display: grid; grid-template-columns: minmax(0, 440px) minmax(0, 1fr); align-items: center; gap: clamp(28px, 5vw, 80px); margin-bottom: clamp(40px, 6vw, 80px); }
@@ -656,6 +689,11 @@ body.beat .beam { opacity: 1; }
 }
 
 @media (max-width: 900px) {
+  .feature__head { margin-bottom: 0; }
+  .feature__head { grid-template-columns: 1fr; }
+  .feature__side, .feature__meta { grid-column: 1; grid-row: auto; }
+  .feature__tape { width: 110px; height: 28px; }
+  .feature__card { padding: 10px 12px; bottom: -18px; }
   .poster__inner { width: 100%; }
   .poster__side { display: none; }
   .poster { min-height: auto; padding-top: calc(var(--head-h) + 24px); }
