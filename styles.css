@@ -584,40 +584,31 @@ body.beat .beam { opacity: 1; }
    ========================================================= */
 /* gallery collage (zine / poster reference) */
 .section--paper { background: #efebe1; overflow-x: clip; }
-.collage {
-  position: relative; display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); grid-auto-rows: 52px;
-  max-width: 1200px; margin: 0 auto; padding: 20px 10px 40px;
-}
+.collage { position: relative; columns: 3; column-gap: clamp(22px, 3vw, 44px); max-width: 1240px; margin: 0 auto; padding: 10px clamp(10px, 2vw, 30px) 20px; }
 .cl-shot {
-  position: relative; z-index: 1; display: block; overflow: hidden; cursor: zoom-in;
-  border: 7px solid #fbfaf6; outline: 1.5px solid var(--ink); background: var(--ink); box-shadow: 6px 10px 18px rgba(13, 13, 13, .22);
+  position: relative; z-index: 1; display: block; width: 100%; margin: 0 0 clamp(26px, 3vw, 40px); break-inside: avoid; cursor: zoom-in;
+  border: 8px solid #fbfaf6; outline: 1.5px solid var(--ink); background: #fbfaf6;
+  box-shadow: 5px 9px 16px rgba(13, 13, 13, .2);
   transform: rotate(var(--r, 0deg)); transition: transform .4s var(--ease), box-shadow .4s;
 }
-.cl-shot img { width: 100%; height: 100%; object-fit: cover; display: block; filter: grayscale(1) contrast(1.2) brightness(1.25); transition: filter .4s; }
-.cl-shot::after {
-  content: ""; position: absolute; inset: 0; pointer-events: none; opacity: .28; mix-blend-mode: multiply;
-  background: radial-gradient(circle, #000 .8px, transparent 1.2px) 0 0 / 4px 4px; transition: opacity .4s;
+.cl-shot img { width: 100%; height: auto; display: block; }
+.cl-shot:hover, .cl-shot:focus-visible { z-index: 5; transform: rotate(0) scale(1.03); box-shadow: 8px 14px 26px rgba(13, 13, 13, .28); }
+.cl-tag {
+  display: table; margin: -8px auto 28px; position: relative; z-index: 2; break-inside: avoid;
+  background: #f8f6f0; color: var(--ink); border: 2px solid var(--ink); padding: 4px 16px;
+  font-family: "Instrument Serif", Georgia, serif; font-style: italic; font-size: clamp(20px, 2vw, 28px); line-height: 1.1;
+  box-shadow: 3px 3px 0 var(--ink); transform: rotate(var(--r, 0deg));
 }
-.cl-shot:hover, .cl-shot:focus-visible { z-index: 5; transform: rotate(0) scale(1.06); box-shadow: 10px 14px 0 rgba(13, 13, 13, .18); }
-.cl-shot:hover img, .cl-shot:focus-visible img { filter: none; }
-.cl-shot:hover::after, .cl-shot:focus-visible::after { opacity: 0; }
+.cl-tag:nth-of-type(2) { background: var(--ink); color: #f8f6f0; box-shadow: 3px 3px 0 var(--green); }
 
-.collage__deco { position: absolute; z-index: 3; pointer-events: none; }
+.collage__deco { position: absolute; z-index: 0; pointer-events: none; }
 .collage__burst { fill: #1d2433; width: clamp(80px, 12vw, 170px); }
-.collage__burst--a { top: 17%; left: -2%; transform: rotate(10deg); }
-.collage__burst--b { top: 47%; right: -1%; width: clamp(90px, 13vw, 190px); }
+.collage__burst--a { top: 3%; left: -3%; transform: rotate(10deg); }
+.collage__burst--b { top: 55%; right: -3%; width: clamp(90px, 13vw, 190px); }
 .collage__scribble { fill: none; stroke: var(--green); stroke-width: 2.4; stroke-linecap: round; }
-.collage__scribble--a { width: clamp(140px, 20vw, 280px); top: 39%; right: 12%; transform: rotate(-12deg); }
-.collage__scribble--b { width: clamp(70px, 9vw, 120px); top: 2%; left: 30%; }
-.collage__scribble--c { width: clamp(110px, 14vw, 200px); bottom: 14%; left: 1%; opacity: .8; }
-.collage__tag {
-  background: #f8f6f0; color: var(--ink); border: 2px solid var(--ink); padding: 4px 14px;
-  font-family: "Instrument Serif", Georgia, serif; font-style: italic; font-size: clamp(18px, 2vw, 28px); line-height: 1.1;
-  white-space: nowrap; box-shadow: 3px 3px 0 var(--ink);
-}
-.collage__tag--a { top: 30%; left: 35%; transform: rotate(-4deg); }
-.collage__tag--b { top: 58%; left: 22%; transform: rotate(3deg); background: var(--ink); color: #f8f6f0; }
-.collage__tag--c { top: 82%; right: 18%; transform: rotate(-2deg); }
+.collage__scribble--a { width: clamp(140px, 20vw, 280px); top: -2%; right: 6%; transform: rotate(-8deg); }
+.collage__scribble--b { width: clamp(70px, 9vw, 120px); bottom: 0; right: 0; }
+.collage__scribble--c { width: clamp(110px, 14vw, 200px); bottom: -1%; left: 2%; opacity: .8; }
 
 .lightbox { border: 0; padding: 0; background: transparent; max-width: 92vw; max-height: 92vh; overflow: visible; }
 .lightbox::backdrop { background: rgba(13, 13, 13, .92); }
@@ -682,6 +673,7 @@ body.beat .beam { opacity: 1; }
    RESPONSIVE
    ========================================================= */
 @media (max-width: 1100px) {
+  .collage { columns: 2; }
   .videos { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .ticket { grid-template-columns: 150px 1fr 190px; }
   .ticket__date b { font-size: 52px; }
@@ -739,13 +731,9 @@ body.beat .beam { opacity: 1; }
 }
 
 @media (max-width: 640px) {
-  .collage { grid-template-columns: repeat(6, minmax(0, 1fr)); grid-auto-rows: 38px; padding: 10px 0 20px; }
-  .collage__burst--a { top: 8%; left: -6%; }
-  .collage__burst--b { top: 52%; right: -6%; }
-  .collage__tag--a { top: 22%; left: 40%; }
-  .collage__tag--b { top: 48%; left: 8%; }
-  .collage__tag--c { top: 78%; right: 6%; }
-  .collage__scribble--a { top: 33%; right: 2%; }
+  .collage { columns: 1; padding: 6px 4px 10px; }
+  .collage__burst--a { left: -10%; } .collage__burst--b { right: -10%; }
+  .cl-shot { border-width: 6px; }
   body { font-size: 16px; }
   .pass-wrap { padding: 10px 0; }
   .pin { display: none; }

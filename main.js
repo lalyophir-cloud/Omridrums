@@ -165,34 +165,19 @@
   }
 
   /* ---------- GALLERY ---------- */
-  // גלריה כקולאז': תמונות עקומות שחופפות זו לזו. לחיצה פותחת בגדול ובצבע
+  // גלריה כקולאז': כל תמונה שלמה ביחס המקורי שלה, בלי חפיפה ובלי חיתוך.
+  // בין התמונות מפוזרות מדבקות טקסט קטנות
   var G = (S.gallery || []).filter(function (g) { return g.src; });
-  // [עמודה, רוחב, שורה, גובה, סיבוב] על גריד של 12 עמודות (מחשב) / 6 (נייד)
-  var LAYOUT_D = [[1,5,1,6,-3],[5,4,2,7,4],[8,5,1,5,-2],[1,4,7,6,3],[4,5,8,5,-4],[9,4,6,7,2],[2,5,13,6,-2],
-                  [6,4,12,7,5],[9,4,13,5,-3],[1,4,19,5,2],[4,5,18,6,-3],[8,5,18,6,3],[2,4,24,6,-4],[6,6,23,7,2]];
-  function cell(i, mobile) {
-    if (!mobile) {
-      var L = LAYOUT_D[i % LAYOUT_D.length], off = Math.floor(i / LAYOUT_D.length) * 30;
-      return [L[0], L[1], L[2] + off, L[3], L[4]];
-    }
-    return [i % 2 ? 2 : 1, 5, 1 + i * 5, 7, i % 2 ? 3 : -3];
-  }
-  var collage = slot("gallery");
-  collage.insertAdjacentHTML("beforeend", G.map(function (g, i) {
+  var TILT = [-2.2, 1.8, -1.2, 2.4, -1.8, 1.2, -2.6, 1.6];
+  var STICKERS = { 2: "LIVE", 6: "TEL AVIV", 10: "OMRI BERGER" };
+  var collage = slot("gallery"), html = "";
+  G.forEach(function (g, i) {
     var cap = (g.caption || "") + (g.credit && PC ? "  /  Photo: " + PC.name : "");
-    return '<button type="button" class="cl-shot" data-i="' + i + '" data-full="' + esc(g.src) + '" data-cap="' + esc(cap) + '" aria-label="' + esc(g.caption || "") + '">' +
+    html += '<button type="button" class="cl-shot" style="--r:' + TILT[i % TILT.length] + 'deg" data-full="' + esc(g.src) + '" data-cap="' + esc(cap) + '" aria-label="' + esc(g.caption || "") + '">' +
       '<img src="' + esc(g.src) + '" alt="' + esc(g.caption || "") + '" loading="lazy"></button>';
-  }).join(""));
-  var clMq = matchMedia("(max-width: 640px)");
-  function layoutCollage() {
-    $$(".cl-shot", collage).forEach(function (b, i) {
-      var c = cell(i, clMq.matches);
-      b.style.gridArea = c[2] + " / " + c[0] + " / span " + c[3] + " / span " + c[1];
-      b.style.setProperty("--r", c[4] + "deg");
-    });
-  }
-  layoutCollage();
-  if (clMq.addEventListener) clMq.addEventListener("change", layoutCollage);
+    if (STICKERS[i]) html += '<span class="cl-tag" lang="en" aria-hidden="true" style="--r:' + (-TILT[i % TILT.length] * 1.5) + 'deg">' + STICKERS[i] + "</span>";
+  });
+  collage.insertAdjacentHTML("beforeend", html);
 
   var box = $(".lightbox");
   document.addEventListener("click", function (e) {
