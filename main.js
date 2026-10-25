@@ -166,16 +166,13 @@
 
   /* ---------- GALLERY ---------- */
   // גלריה כקולאז': כל תמונה שלמה ביחס המקורי שלה, בלי חפיפה ובלי חיתוך.
-  // בין התמונות מפוזרות מדבקות טקסט קטנות
   var G = (S.gallery || []).filter(function (g) { return g.src; });
   var TILT = [-2.2, 1.8, -1.2, 2.4, -1.8, 1.2, -2.6, 1.6];
-  var STICKERS = { 2: "LIVE", 6: "TEL AVIV", 10: "OMRI BERGER" };
   var collage = slot("gallery"), html = "";
   G.forEach(function (g, i) {
     var cap = (g.caption || "") + (g.credit && PC ? "  /  Photo: " + PC.name : "");
     html += '<button type="button" class="cl-shot" style="--r:' + TILT[i % TILT.length] + 'deg" data-full="' + esc(g.src) + '" data-cap="' + esc(cap) + '" aria-label="' + esc(g.caption || "") + '">' +
       '<img src="' + esc(g.src) + '" alt="' + esc(g.caption || "") + '" loading="lazy"></button>';
-    if (STICKERS[i]) html += '<span class="cl-tag" lang="en" aria-hidden="true" style="--r:' + (-TILT[i % TILT.length] * 1.5) + 'deg">' + STICKERS[i] + "</span>";
   });
   collage.insertAdjacentHTML("beforeend", html);
 
