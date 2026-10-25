@@ -22,8 +22,8 @@ window.SITE = {
   genres: ["ROCK", "FUNK", "JAZZ", "POP", "FUSION", "LIVE SHOWS", "STUDIO SESSIONS", "DRUM LESSONS"],
 
   about: {
-    portrait: "images/portrait.jpg",  // "images/portrait.jpg"  תמונת פנים / פרופיל
-    fullBody: "images/arms-up-bw.jpg",  // "images/full.jpg"      תמונה לאורך, גוף מלא
+    portrait: "images/about-portrait.jpg",  // "images/portrait.jpg"  תמונת פנים / פרופיל
+    fullBody: "images/about-full.jpg",  // "images/full.jpg"      תמונה לאורך, גוף מלא
     paragraphs: [
       "היי, אני עמרי. מתופף מתל אביב שמנגן כבר יותר מעשר שנים.",
       "גדלתי על רוק ופאנק, ובדרך התאהבתי בג'אז ובגרוב. היום אני מנגן עם כמה הרכבים, בהופעות חיות ובאולפן, ותמיד מחפש את הסאונד הזה שגורם לקהל לזוז.",

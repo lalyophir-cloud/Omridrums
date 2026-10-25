@@ -781,3 +781,4 @@ body.beat .beam { opacity: 1; }
   html { scroll-behavior: auto; }
   .reveal { opacity: 1; transform: none; }
 }
+.pass__portrait img { object-position: 74% 45%; }
