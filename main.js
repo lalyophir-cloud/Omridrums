@@ -78,7 +78,17 @@
   /* ---------- MUSIC ---------- */
   var M = S.music || {};
 
+  // מוציא את המזהה מכל סוג של לינק יוטיוב (watch, youtu.be, shorts) או מזהה לבד
+  function ytInfo(v) {
+    var raw = v.youtube || v.youtubeId || "";
+    var m = raw.match(/(?:youtu\.be\/|[?&]v=|\/shorts\/|\/embed\/|\/live\/)([A-Za-z0-9_-]{11})/);
+    var id = m ? m[1] : (/^[A-Za-z0-9_-]{11}$/.test(raw) ? raw : "");
+    return { id: id, vertical: /\/shorts\//.test(raw) || !!v.vertical };
+  }
+
   function videoCard(v, i, featured) {
+    var yt = ytInfo(v);
+    v.youtubeId = yt.id;
     var thumb = v.youtubeId
       ? '<img src="https://i.ytimg.com/vi/' + esc(v.youtubeId) + '/hqdefault.jpg" alt="" loading="lazy">'
       : v.file
@@ -89,7 +99,7 @@
       ? '<div class="video__meta">' + (v.title ? "<h3>" + esc(v.title) + "</h3>" : "") +
           (v.from ? '<span class="video__from">' + esc(v.from) + "</span>" : "") + "</div>"
       : "";
-    return '<article class="video' + (featured ? " video--featured" : "") + ' reveal">' +
+    return '<article class="video' + (featured ? " video--featured" : "") + (yt.vertical ? " video--vertical" : "") + ' reveal">' +
       '<button class="video__frame" type="button" data-yt="' + esc(v.youtubeId || "") + '" data-file="' + esc(v.file || "") + '" aria-label="ניגון: ' + esc(label) + '">' +
         thumb +
         '<span class="video__play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>' +

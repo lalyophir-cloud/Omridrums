@@ -39,17 +39,17 @@ window.SITE = {
 
   music: {
     // סרטונים. לכל סרטון ממלאים:
-    //   file:      קובץ וידאו שמעלים לתיקייה videos, למשל "videos/gagarin.mp4"
-    //   youtubeId: או סרטון מיוטיוב: מה שבא אחרי watch?v=  (https://www.youtube.com/watch?v=abc123 -> "abc123")
-    //   title:     מה זה. למשל "סולו תופים"
-    //   from:      מאיפה. למשל "גגארין, תל אביב 2026"
-    // שדה ריק לא מוצג. סרטון בלי file ובלי youtubeId מוצג כמקום שמור.
-    featured: { file: "", youtubeId: "", title: "", from: "" },
+    //   youtube: לינק מיוטיוב, מדביקים כמו שהוא (גם Shorts וגם סרטון רגיל)
+    //   file:    או קובץ וידאו שמעלים לתיקייה videos, למשל "videos/gagarin.mp4"
+    //   title:   מה זה. למשל "סולו תופים"
+    //   from:    מאיפה. למשל "גגארין, תל אביב 2026"
+    // Shorts מוצגים לאורך לבד. שדה ריק לא מוצג. סרטון בלי לינק ובלי קובץ מוצג כמקום שמור.
+    featured: { youtube: "https://youtube.com/shorts/lpARp2Kq6ic", file: "", title: "", from: "" },
     videos: [
-      { file: "", youtubeId: "", title: "", from: "" },
-      { file: "", youtubeId: "", title: "", from: "" },
-      { file: "", youtubeId: "", title: "", from: "" },
-      { file: "", youtubeId: "", title: "", from: "" }
+      { youtube: "", file: "", title: "", from: "" },
+      { youtube: "", file: "", title: "", from: "" },
+      { youtube: "", file: "", title: "", from: "" },
+      { youtube: "", file: "", title: "", from: "" }
     ],
     // העטיפה של התקליט שיוצא מהצד (התמונה במרכז התקליט = תמונת הפרופיל)
     cover: "images/live-red.jpg",
