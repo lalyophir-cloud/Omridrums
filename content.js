@@ -44,7 +44,7 @@ window.SITE = {
     //   title:   מה זה. למשל "סולו תופים"
     //   from:    מאיפה. למשל "גגארין, תל אביב 2026"
     // Shorts מוצגים לאורך לבד. שדה ריק לא מוצג. סרטון בלי לינק ובלי קובץ מוצג כמקום שמור.
-    featured: { youtube: "https://youtube.com/shorts/lpARp2Kq6ic", file: "", title: "", from: "" },
+    featured: { youtube: "", file: "", title: "", from: "" },
     videos: [
       { youtube: "", file: "", title: "", from: "" },
       { youtube: "", file: "", title: "", from: "" },
