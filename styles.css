@@ -407,7 +407,7 @@ body.beat .beam { opacity: 1; }
 .music { display: grid; grid-template-columns: minmax(0, 440px) minmax(0, 1fr); align-items: center; gap: clamp(28px, 5vw, 80px); margin-bottom: clamp(40px, 6vw, 80px); }
 .music .record { margin-bottom: 0; }
 .music__intro { max-width: 520px; }
-.music__featured { margin-bottom: clamp(24px, 4vw, 48px); }
+.music__featured { margin-top: clamp(24px, 4vw, 48px); }
 .record { position: relative; width: 100%; max-width: 440px; aspect-ratio: 1.55 / 1; margin-bottom: 28px; }
 .record__sleeve {
   position: absolute; inset-block: 0; inset-inline-start: 0; aspect-ratio: 1; z-index: 2; overflow: hidden;

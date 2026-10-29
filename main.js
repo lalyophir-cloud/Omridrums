@@ -125,12 +125,18 @@
 
   document.addEventListener("click", function (e) {
     var btn = e.target.closest(".video__frame");
-    if (!btn) return;
+    // סרטון שכבר מתנגן: הלחיצה הולכת לנגן עצמו, לא יוצרים עוד אחד מעליו
+    if (!btn || btn.classList.contains("is-playing")) return;
     var id = btn.getAttribute("data-yt"), file = btn.getAttribute("data-file");
     if (file && !id) {
       // רק סרטון אחד מתנגן בכל פעם
       $$(".video__frame.is-playing video").forEach(function (o) { o.pause(); });
       btn.innerHTML = '<video src="' + esc(file) + '" controls autoplay playsinline></video>';
+      // כשמפעילים סרטון אחד, כל השאר נעצרים
+      btn.querySelector("video").addEventListener("play", function () {
+        var me = this;
+        $$(".video__frame video").forEach(function (o) { if (o !== me) o.pause(); });
+      });
       btn.classList.add("is-playing");
       return;
     }
