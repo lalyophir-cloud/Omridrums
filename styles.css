@@ -553,20 +553,20 @@ body.beat .beam { opacity: 1; }
    ========================================================= */
 /* gallery collage (zine / poster reference) */
 .section--paper { background: #efebe1; overflow-x: clip; }
-/* justified rows: every row the same height, photos never cropped */
-.collage {
-  --row: clamp(150px, 22vw, 300px);
-  position: relative; display: flex; flex-wrap: wrap; gap: clamp(10px, 1.4vw, 18px);
-  max-width: 1240px; margin: 0 auto; padding: 10px 0 20px;
-}
-.collage::after { content: ""; flex: 999 1 0; }
+/* photos scattered on a table */
+.collage { position: relative; max-width: 1240px; margin: 0 auto; min-height: 400px; }
 .cl-shot {
-  position: relative; z-index: 1; display: block; cursor: zoom-in; padding: 6px; background: #fbfaf6;
-  outline: 1.5px solid var(--ink); box-shadow: 4px 7px 14px rgba(13, 13, 13, .16);
-  flex: var(--ar, 1.4) 1 calc(var(--ar, 1.4) * var(--row)); transition: transform .35s var(--ease), box-shadow .35s;
+  --mx: 0px; --my: 0px; --r: 0deg;
+  position: absolute; display: block; cursor: zoom-in; padding: 7px 7px 7px; background: #fbfaf6;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, .25), 3px 10px 22px rgba(13, 13, 13, .22);
+  transform: translate(var(--mx), var(--my)) rotate(var(--r));
+  transition: transform .45s var(--ease), box-shadow .45s;
 }
-.cl-shot img { width: 100%; height: auto; aspect-ratio: var(--ar, 1.4); object-fit: cover; display: block; }
-.cl-shot:hover, .cl-shot:focus-visible { z-index: 5; transform: translateY(-4px) rotate(-.6deg); box-shadow: 8px 14px 24px rgba(13, 13, 13, .26); }
+.cl-shot img { width: 100%; height: auto; display: block; }
+.cl-shot:hover, .cl-shot:focus-visible {
+  z-index: 100 !important; transform: translateY(-10px) rotate(0) scale(1.08);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, .25), 10px 26px 40px rgba(13, 13, 13, .32);
+}
 
 .collage__deco { position: absolute; z-index: 0; pointer-events: none; }
 .collage__burst { fill: #1d2433; width: clamp(80px, 12vw, 170px); }
@@ -692,9 +692,8 @@ body.beat .beam { opacity: 1; }
 }
 
 @media (max-width: 640px) {
-  .collage { --row: 150px; gap: 8px; }
   .collage__burst--a { left: -10%; } .collage__burst--b { right: -10%; }
-  .cl-shot { padding: 4px; }
+  .cl-shot { padding: 5px; }
   body { font-size: 16px; }
   .pass-wrap { padding: 10px 0; }
   .pin { display: none; }

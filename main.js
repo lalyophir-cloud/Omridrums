@@ -174,20 +174,56 @@
   }
 
   /* ---------- GALLERY ---------- */
-  // גלריה כקולאז': כל תמונה שלמה ביחס המקורי שלה, בלי חפיפה ובלי חיתוך.
+  // גלריה כתמונות מפוזרות על שולחן: כל אחת שלמה, קצת עקומה, חלק עולות אחת על השנייה.
+  // העכבר מזיז קצת את התמונות שלידו, ותמונה שעומדים עליה עולה למעלה ומתיישרת
   var G = (S.gallery || []).filter(function (g) { return g.src; });
   var collage = slot("gallery"), html = "";
   G.forEach(function (g, i) {
     var cap = (g.caption || "") + (g.credit && PC ? "  /  Photo: " + PC.name : "");
-    html += '<button type="button" class="cl-shot" style="--ar:' + (g.ar || 1.4) + '" data-full="' + esc(g.src) + '" data-cap="' + esc(cap) + '" aria-label="' + esc(g.caption || "") + '">' +
+    html += '<button type="button" class="cl-shot" data-ar="' + (g.ar || 1.4) + '" data-full="' + esc(g.src) + '" data-cap="' + esc(cap) + '" aria-label="' + esc(g.caption || "") + '">' +
       '<img src="' + esc(g.src) + '" alt="' + esc(g.caption || "") + '" loading="lazy"></button>';
   });
   collage.insertAdjacentHTML("beforeend", html);
-  // היחס של כל תמונה נמדד כשהיא נטענת, כדי שכל השורות יהיו באותו גובה בלי לחתוך
-  $$(".cl-shot img", collage).forEach(function (img) {
-    function set() { if (img.naturalWidth) img.parentNode.style.setProperty("--ar", (img.naturalWidth / img.naturalHeight).toFixed(3)); }
-    if (img.complete) set(); else img.addEventListener("load", set);
-  });
+  var cards = $$(".cl-shot", collage);
+
+  function rnd(seed) { var x = Math.sin(seed * 9301 + 49297) * 233280; return x - Math.floor(x); }
+  function layoutTable() {
+    var W = collage.clientWidth, cols = W < 640 ? 2 : W < 1000 ? 3 : 4;
+    var cw = W / cols, ch = cw * (cols === 2 ? 1.05 : .82), maxBottom = 0;
+    cards.forEach(function (c, i) {
+      var ar = +c.getAttribute("data-ar") || 1.4;
+      var w = ar >= 1 ? cw * 1.12 : cw * .78, h = w / ar;
+      var col = i % cols, row = Math.floor(i / cols);
+      var cx = cw * (col + .5) + (rnd(i + 1) - .5) * cw * .28;
+      var cy = ch * (row + .5) + (rnd(i + 50) - .5) * ch * .3 + h * .1;
+      var x = Math.min(Math.max(cx - w / 2, -cw * .04), W - w + cw * .04), y = Math.max(cy - h / 2, 0);
+      c.style.width = w.toFixed(1) + "px";
+      c.style.left = x.toFixed(1) + "px";
+      c.style.top = y.toFixed(1) + "px";
+      c.style.zIndex = 1 + Math.floor(rnd(i + 99) * cards.length);
+      c.style.setProperty("--r", ((rnd(i + 7) - .5) * 12).toFixed(1) + "deg");
+      maxBottom = Math.max(maxBottom, y + h);
+    });
+    collage.style.height = (maxBottom + 30).toFixed(0) + "px";
+  }
+  layoutTable();
+  addEventListener("resize", layoutTable);
+
+  var fine = matchMedia("(hover: hover)").matches;
+  if (fine) {
+    collage.addEventListener("mousemove", function (e) {
+      cards.forEach(function (c) {
+        if (c.matches(":hover")) return;
+        var r = c.getBoundingClientRect(), dx = r.left + r.width / 2 - e.clientX, dy = r.top + r.height / 2 - e.clientY;
+        var d = Math.hypot(dx, dy) || 1, f = Math.max(0, 1 - d / 320) * 26;
+        c.style.setProperty("--mx", (dx / d * f).toFixed(1) + "px");
+        c.style.setProperty("--my", (dy / d * f).toFixed(1) + "px");
+      });
+    });
+    collage.addEventListener("mouseleave", function () {
+      cards.forEach(function (c) { c.style.setProperty("--mx", "0px"); c.style.setProperty("--my", "0px"); });
+    });
+  }
 
   var box = $(".lightbox");
   document.addEventListener("click", function (e) {

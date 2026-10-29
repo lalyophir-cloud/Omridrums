@@ -93,7 +93,11 @@ window.SITE = {
     { src: "images/arms-up-bw.jpg",    caption: "סוף ההופעה",      credit: true, ar: 0.746 },
     { src: "images/pearl-kit-bw.jpg",  caption: "מאחורי ה-Pearl", ar: 0.562 },
     { src: "images/through-phone.jpg", caption: "מהקהל", ar: 0.46 },
-    { src: "images/focus-bw.jpg",      caption: "פוקוס", ar: 0.562 }
+    { src: "images/focus-bw.jpg",      caption: "פוקוס", ar: 0.562 },
+    { src: "images/g-wide-red.jpg", caption: "עם הלהקה על הבמה", ar: 1.500 },
+    { src: "images/g-rehearsal.jpg", caption: "בחזרות", ar: 1.501 },
+    { src: "images/g-smile.jpg", caption: "חיוך מאחורי התופים", ar: 0.667 },
+    { src: "images/g-motion.jpg", caption: "בתנועה", ar: 0.667 }
   ],
 
   // "מה אני עושה". link: "whatsapp" = כפתור לוואטסאפ, או לינק רגיל, או ריק
