@@ -92,15 +92,17 @@
     var thumb = v.youtubeId
       ? '<img src="https://i.ytimg.com/vi/' + esc(v.youtubeId) + '/hqdefault.jpg" alt="" loading="lazy">'
       : v.file
-        ? '<video src="' + esc(v.file) + '#t=0.5" preload="metadata" muted playsinline></video>'
+        ? (v.poster ? '<img src="' + esc(v.poster) + '" alt="" loading="lazy">'
+                    : '<video src="' + esc(v.file) + '#t=0.5" preload="metadata" muted playsinline></video>')
         : '<div class="ph"><span class="ph__label mono">VIDEO ' + pad(i + 1) + "</span></div>";
     var label = [v.title, v.from].filter(Boolean).join(" / ") || "סרטון " + (i + 1);
     var meta = v.title || v.from
       ? '<div class="video__meta">' + (v.title ? "<h3>" + esc(v.title) + "</h3>" : "") +
           (v.from ? '<span class="video__from">' + esc(v.from) + "</span>" : "") + "</div>"
       : "";
-    return '<article class="video' + (featured ? " video--featured" : "") + (yt.vertical ? " video--vertical" : "") + ' reveal">' +
-      '<button class="video__frame" type="button" data-yt="' + esc(v.youtubeId || "") + '" data-file="' + esc(v.file || "") + '" aria-label="ניגון: ' + esc(label) + '">' +
+    var vertical = yt.vertical || (v.ar && v.ar < 1);
+    return '<article class="video' + (featured ? " video--featured" : "") + (vertical ? " video--vertical" : "") + ' reveal">' +
+      '<button class="video__frame" type="button"' + (v.ar ? ' style="aspect-ratio:' + v.ar + '"' : "") + ' data-yt="' + esc(v.youtubeId || "") + '" data-file="' + esc(v.file || "") + '" aria-label="ניגון: ' + esc(label) + '">' +
         thumb +
         '<span class="video__play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>' +
       "</button>" + meta +
@@ -126,6 +128,8 @@
     if (!btn) return;
     var id = btn.getAttribute("data-yt"), file = btn.getAttribute("data-file");
     if (file && !id) {
+      // רק סרטון אחד מתנגן בכל פעם
+      $$(".video__frame.is-playing video").forEach(function (o) { o.pause(); });
       btn.innerHTML = '<video src="' + esc(file) + '" controls autoplay playsinline></video>';
       btn.classList.add("is-playing");
       return;

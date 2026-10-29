@@ -40,16 +40,18 @@ window.SITE = {
   music: {
     // סרטונים. לכל סרטון ממלאים:
     //   youtube: לינק מיוטיוב, מדביקים כמו שהוא (גם Shorts וגם סרטון רגיל)
-    //   file:    או קובץ וידאו שמעלים לתיקייה videos, למשל "videos/gagarin.mp4"
+    //   file:    או קובץ וידאו מהתיקייה videos, למשל "videos/gagarin.mp4"
+    //   poster:  תמונה שמוצגת לפני שלוחצים (לא חובה)
+    //   ar:      יחס רוחב/גובה של הסרטון. לאורך: 0.5625, לרוחב: 1.778
     //   title:   מה זה. למשל "סולו תופים"
     //   from:    מאיפה. למשל "גגארין, תל אביב 2026"
     // Shorts מוצגים לאורך לבד. שדה ריק לא מוצג. סרטון בלי לינק ובלי קובץ מוצג כמקום שמור.
-    featured: { youtube: "", file: "", title: "", from: "" },
+    featured: { file: "videos/crawfords-pass.mp4", poster: "videos/crawfords-pass.jpg", ar: 1.983, title: "Crawford's Pass", from: "Aziz Leon" },
     videos: [
-      { youtube: "", file: "", title: "", from: "" },
-      { youtube: "", file: "", title: "", from: "" },
-      { youtube: "", file: "", title: "", from: "" },
-      { youtube: "", file: "", title: "", from: "" }
+      { file: "videos/arctic-kartiv.mp4", poster: "videos/arctic-kartiv.jpg", ar: 0.5625, title: "ארקטיק קרטיב", from: "" },
+      { file: "videos/live-9405.mp4",     poster: "videos/live-9405.jpg",     ar: 0.5625, title: "", from: "" },
+      { file: "videos/dudu-tassa.mp4",    poster: "videos/dudu-tassa.jpg",    ar: 0.5625, title: "דודו טסה", from: "" },
+      { file: "videos/layli.mp4",         poster: "videos/layli.jpg",         ar: 0.5625, title: "Layli", from: "" }
     ],
     // העטיפה של התקליט שיוצא מהצד (התמונה במרכז התקליט = תמונת הפרופיל)
     cover: "images/live-red.jpg",
