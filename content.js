@@ -79,20 +79,21 @@ window.SITE = {
   photoCredit: { name: "@eilonbphoto", url: "https://instagram.com/eilonbphoto" },
 
   gallery: [
-    { src: "images/g-crowd.jpg",       caption: "ארקטיק קרטיב, גגארין" },
-    { src: "images/g-offbit.jpg",      caption: "הופעה באוויר הפתוח" },
-    { src: "images/spotlights.jpg",    caption: "באור הזרקורים",   credit: true },
-    { src: "images/g-clap.jpg",        caption: "בין השירים" },
-    { src: "images/band-gagarin.jpg",  caption: "גגארין, תל אביב", credit: true },
-    { src: "images/g-bw-side.jpg",     caption: "מהצד של הבמה" },
-    { src: "images/live-red.jpg",      caption: "על הבמה",         credit: true },
-    { src: "images/sticks-bw.jpg",     caption: "מקלות למעלה",     credit: true },
-    { src: "images/live-green.jpg",    caption: "רגע לפני הפזמון", credit: true },
-    { src: "images/stage-view.jpg",    caption: "מאחורי התופים",   credit: true },
-    { src: "images/arms-up-bw.jpg",    caption: "סוף ההופעה",      credit: true },
-    { src: "images/pearl-kit-bw.jpg",  caption: "מאחורי ה-Pearl" },
-    { src: "images/through-phone.jpg", caption: "מהקהל" },
-    { src: "images/focus-bw.jpg",      caption: "פוקוס" }
+    { src: "images/g-crowd.jpg",       caption: "ארקטיק קרטיב, גגארין", ar: 1.501 },
+    { src: "images/g-offbit.jpg",      caption: "הופעה באוויר הפתוח", ar: 1.501 },
+    { src: "images/spotlights.jpg",    caption: "באור הזרקורים",   credit: true, ar: 0.746 },
+    { src: "images/g-clap.jpg",        caption: "בין השירים", ar: 0.666 },
+    { src: "images/band-gagarin.jpg",  caption: "גגארין, תל אביב", credit: true, ar: 0.752 },
+    { src: "images/g-bw-side.jpg",     caption: "מהצד של הבמה", ar: 0.666 },
+    { src: "images/g-bw-stage.jpg",    caption: "מאחורי המיקרופונים", ar: 1.338 },
+    { src: "images/live-red.jpg",      caption: "על הבמה",         credit: true, ar: 0.746 },
+    { src: "images/sticks-bw.jpg",     caption: "מקלות למעלה",     credit: true, ar: 0.747 },
+    { src: "images/live-green.jpg",    caption: "רגע לפני הפזמון", credit: true, ar: 0.747 },
+    { src: "images/stage-view.jpg",    caption: "מאחורי התופים",   credit: true, ar: 0.752 },
+    { src: "images/arms-up-bw.jpg",    caption: "סוף ההופעה",      credit: true, ar: 0.746 },
+    { src: "images/pearl-kit-bw.jpg",  caption: "מאחורי ה-Pearl", ar: 0.562 },
+    { src: "images/through-phone.jpg", caption: "מהקהל", ar: 0.46 },
+    { src: "images/focus-bw.jpg",      caption: "פוקוס", ar: 0.562 }
   ],
 
   // "מה אני עושה". link: "whatsapp" = כפתור לוואטסאפ, או לינק רגיל, או ריק

@@ -176,14 +176,18 @@
   /* ---------- GALLERY ---------- */
   // גלריה כקולאז': כל תמונה שלמה ביחס המקורי שלה, בלי חפיפה ובלי חיתוך.
   var G = (S.gallery || []).filter(function (g) { return g.src; });
-  var TILT = [-2.2, 1.8, -1.2, 2.4, -1.8, 1.2, -2.6, 1.6];
   var collage = slot("gallery"), html = "";
   G.forEach(function (g, i) {
     var cap = (g.caption || "") + (g.credit && PC ? "  /  Photo: " + PC.name : "");
-    html += '<button type="button" class="cl-shot" style="--r:' + TILT[i % TILT.length] + 'deg" data-full="' + esc(g.src) + '" data-cap="' + esc(cap) + '" aria-label="' + esc(g.caption || "") + '">' +
+    html += '<button type="button" class="cl-shot" style="--ar:' + (g.ar || 1.4) + '" data-full="' + esc(g.src) + '" data-cap="' + esc(cap) + '" aria-label="' + esc(g.caption || "") + '">' +
       '<img src="' + esc(g.src) + '" alt="' + esc(g.caption || "") + '" loading="lazy"></button>';
   });
   collage.insertAdjacentHTML("beforeend", html);
+  // היחס של כל תמונה נמדד כשהיא נטענת, כדי שכל השורות יהיו באותו גובה בלי לחתוך
+  $$(".cl-shot img", collage).forEach(function (img) {
+    function set() { if (img.naturalWidth) img.parentNode.style.setProperty("--ar", (img.naturalWidth / img.naturalHeight).toFixed(3)); }
+    if (img.complete) set(); else img.addEventListener("load", set);
+  });
 
   var box = $(".lightbox");
   document.addEventListener("click", function (e) {
