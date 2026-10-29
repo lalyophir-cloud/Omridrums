@@ -14,8 +14,8 @@ window.SITE = {
   // מספרים שמופיעים בראש העמוד ובכרטיס
   stats: [
     { num: "10+", en: "YEARS", label: "שנים מאחורי התופים" },
-    { num: "200+", en: "SHOWS", label: "הופעות" },
-    { num: "30+", en: "SESSIONS", label: "הקלטות באולפן" }
+    { num: "∞", en: "HITS", label: "אין סוף מכות בתוף" },
+    { num: "200+", en: "HOURS", label: "שעות הקלטה באולפן" }
   ],
 
   // מופיעים בפס הירוק שזז (באנגלית)
@@ -26,27 +26,30 @@ window.SITE = {
     fullBody: "images/about-full.jpg",  // "images/full.jpg"      תמונה לאורך, גוף מלא
     paragraphs: [
       "היי, אני עמרי. מתופף מתל אביב שמנגן כבר יותר מעשר שנים.",
-      "גדלתי על רוק ופאנק, ובדרך התאהבתי בג'אז ובגרוב. היום אני מנגן עם כמה הרכבים, בהופעות חיות ובאולפן, ותמיד מחפש את הסאונד הזה שגורם לקהל לזוז.",
+      "מנגן מספר רב של סגנונות, זמין להצטרף להרכבים ולוות אמנים.יות במוזיקה שלהם.ן!",
       "פה תמצאו הקלטות, הופעות קרובות ודרך מהירה לדבר איתי."
     ],
     card: [
       { en: "Name",   label: "שם",     value: "עמרי ברגר" },
       { en: "Role",   label: "תפקיד",  value: "מתופף / כלי הקשה" },
-      { en: "Style",  label: "סגנון",  value: "רוק, פאנק, פיוז'ן" },
       { en: "Based",  label: "בסיס",   value: "תל אביב" },
       { en: "Status", label: "סטטוס",  value: "פנוי להופעות" }
     ]
   },
 
   music: {
-    // מזהה של סרטון יוטיוב: מה שבא אחרי watch?v=
-    // לדוגמה https://www.youtube.com/watch?v=abc123  ->  "abc123"
-    featured: { youtubeId: "", title: "הופעה חיה / סולו תופים", tag: "LIVE" },
+    // סרטונים. לכל סרטון ממלאים:
+    //   file:      קובץ וידאו שמעלים לתיקייה videos, למשל "videos/gagarin.mp4"
+    //   youtubeId: או סרטון מיוטיוב: מה שבא אחרי watch?v=  (https://www.youtube.com/watch?v=abc123 -> "abc123")
+    //   title:     מה זה. למשל "סולו תופים"
+    //   from:      מאיפה. למשל "גגארין, תל אביב 2026"
+    // שדה ריק לא מוצג. סרטון בלי file ובלי youtubeId מוצג כמקום שמור.
+    featured: { file: "", youtubeId: "", title: "", from: "" },
     videos: [
-      { youtubeId: "", title: "Drum Cover #1", tag: "COVER" },
-      { youtubeId: "", title: "סשן באולפן", tag: "STUDIO" },
-      { youtubeId: "", title: "גרוב פאנק", tag: "GROOVE" },
-      { youtubeId: "", title: "הופעה עם ההרכב", tag: "LIVE" }
+      { file: "", youtubeId: "", title: "", from: "" },
+      { file: "", youtubeId: "", title: "", from: "" },
+      { file: "", youtubeId: "", title: "", from: "" },
+      { file: "", youtubeId: "", title: "", from: "" }
     ],
     // העטיפה של התקליט שיוצא מהצד (התמונה במרכז התקליט = תמונת הפרופיל)
     cover: "images/live-red.jpg",
@@ -94,9 +97,9 @@ window.SITE = {
 
   // "מה אני עושה". link: "whatsapp" = כפתור לוואטסאפ, או לינק רגיל, או ריק
   services: [
-    { en: "Live shows",    he: "הופעות",       text: "מתופף בהופעות חיות עם הרכבים ואמנים, וגם מחליף לערב כשצריך.", link: "#shows",   cta: "להופעות הקרובות" },
-    { en: "Recordings",    he: "הקלטות",       text: "סשנים באולפן ותופים להקלטות, משיר אחד ועד אלבום שלם.",      link: "whatsapp", cta: "לתאם סשן" },
-    { en: "Drum lessons",  he: "שיעורי תופים", text: "שיעורים פרטיים למתחילים ולמתקדמים. גרוב, טכניקה ומה שבא לכם לנגן.", link: "whatsapp", cta: "לתאם שיעור" }
+    { en: "Live shows",    he: "הופעות",       text: "זמין להחלפות מהיום להיום!", link: "#shows",   cta: "להופעות הקרובות" },
+    { en: "Recordings",    he: "הקלטות",       text: "סשנים באולפן, הקלטות תופים למוזיקה שלכם.ן!",      link: "whatsapp", cta: "לתאם סשן" },
+    { en: "Drum lessons",  he: "שיעורי תופים", text: "שיעורים פרטיים למתחילים ולמתקדמים. גרוב, טכניקה ומה שבא לכם.ן לנגן.", link: "whatsapp", cta: "לתאם שיעור" }
   ],
 
   contact: {

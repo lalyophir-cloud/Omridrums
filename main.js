@@ -72,24 +72,28 @@
     return "<p" + (i === 0 ? ' class="lead"' : "") + ">" + esc(p) + "</p>";
   }).join("");
   slot("about-stats").innerHTML = (S.stats || []).map(function (s) {
-    return '<div><b>' + esc(s.num) + "</b><span>" + esc(s.label) + "</span></div>";
+    return '<div><b' + (/∞/.test(s.num) ? ' class="is-symbol"' : "") + ">" + esc(s.num) + "</b><span>" + esc(s.label) + "</span></div>";
   }).join("");
 
   /* ---------- MUSIC ---------- */
   var M = S.music || {};
 
   function videoCard(v, i, featured) {
-    var num = "VIDEO " + pad(i + 1);
     var thumb = v.youtubeId
       ? '<img src="https://i.ytimg.com/vi/' + esc(v.youtubeId) + '/hqdefault.jpg" alt="" loading="lazy">'
-      : '<div class="ph"><span class="ph__label mono">' + num + "</span></div>";
+      : v.file
+        ? '<video src="' + esc(v.file) + '#t=0.5" preload="metadata" muted playsinline></video>'
+        : '<div class="ph"><span class="ph__label mono">VIDEO ' + pad(i + 1) + "</span></div>";
+    var label = [v.title, v.from].filter(Boolean).join(" / ") || "סרטון " + (i + 1);
+    var meta = v.title || v.from
+      ? '<div class="video__meta">' + (v.title ? "<h3>" + esc(v.title) + "</h3>" : "") +
+          (v.from ? '<span class="video__from">' + esc(v.from) + "</span>" : "") + "</div>"
+      : "";
     return '<article class="video' + (featured ? " video--featured" : "") + ' reveal">' +
-      '<button class="video__frame" type="button" data-yt="' + esc(v.youtubeId || "") + '" aria-label="ניגון: ' + esc(v.title) + '">' +
+      '<button class="video__frame" type="button" data-yt="' + esc(v.youtubeId || "") + '" data-file="' + esc(v.file || "") + '" aria-label="ניגון: ' + esc(label) + '">' +
         thumb +
         '<span class="video__play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>' +
-        '<span class="video__tag mono">' + esc(v.tag || "VIDEO") + "</span>" +
-      "</button>" +
-      '<div class="video__meta"><span class="mono">' + pad(i + 1) + "</span><h3>" + esc(v.title) + "</h3></div>" +
+      "</button>" + meta +
     "</article>";
   }
 
@@ -110,7 +114,12 @@
   document.addEventListener("click", function (e) {
     var btn = e.target.closest(".video__frame");
     if (!btn) return;
-    var id = btn.getAttribute("data-yt");
+    var id = btn.getAttribute("data-yt"), file = btn.getAttribute("data-file");
+    if (file && !id) {
+      btn.innerHTML = '<video src="' + esc(file) + '" controls autoplay playsinline></video>';
+      btn.classList.add("is-playing");
+      return;
+    }
     if (!id) {
       btn.classList.add("is-empty");
       setTimeout(function () { btn.classList.remove("is-empty"); }, 1400);

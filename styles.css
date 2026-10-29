@@ -485,7 +485,9 @@ body.beat .beam { opacity: 1; }
   background: radial-gradient(circle, #000 1px, transparent 1.4px) 0 0 / 5px 5px; transition: opacity .5s;
 }
 .video__frame:hover::after, .video__frame.is-playing::after { opacity: 0; }
-.video__frame iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+.video__frame iframe, .video__frame video { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; object-fit: cover; background: #000; }
+.video__frame.is-playing video { object-fit: contain; }
+.video__from { display: block; font-size: 13px; opacity: .6; margin-top: 2px; }
 .video__play {
   position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); z-index: 1;
   width: 64px; height: 64px; border-radius: 50%; background: var(--green);
@@ -499,7 +501,7 @@ body.beat .beam { opacity: 1; }
   content: "הסרטון יעלה בקרוב"; position: absolute; inset: auto 10px 10px; z-index: 2;
   background: var(--ink); color: var(--paper); padding: 6px 10px; font-size: 13px; text-align: center;
 }
-.video__meta { display: flex; gap: 10px; align-items: baseline; padding-top: 10px; }
+.video__meta { display: block; padding-top: 10px; }
 .video__meta .mono { color: var(--green); font-weight: 700; }
 .video__meta h3 { font-size: 16px; font-weight: 700; }
 .video--featured .video__meta h3 { font-size: clamp(20px, 2vw, 26px); font-weight: 900; }
@@ -760,3 +762,4 @@ body.beat .beam { opacity: 1; }
 }
 .pass__portrait img { object-position: 72% 42%; }
 .pass__full img { object-position: 45% 35%; }
+.about__stats b.is-symbol { font-family: "Rubik", sans-serif; font-weight: 700; line-height: .9; transform: scale(1.35); }
