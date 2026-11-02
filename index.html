@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>OMRI DRUMS / עמרי מתופף</title>
+  <meta name="description" content="עמרי, מתופף. הקלטות, הופעות, גלריה ויצירת קשר.">
+  <meta name="theme-color" content="#0d0d0d">
+  <meta property="og:title" content="OMRI DRUMS / עמרי מתופף">
+  <meta property="og:description" content="הקלטות, הופעות ויצירת קשר. הכל בלינק אחד.">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo+Black&family=Instrument+Serif:ital@0;1&family=Londrina+Solid:wght@900&family=Reenie+Beanie&family=Rubik:wght@400;500;700;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="grain" aria-hidden="true"></div>
+  <div class="progress" aria-hidden="true"><span></span></div>
+
+  <!-- ===== HEADER ===== -->
+  <header class="topbar">
+    <a href="#top" class="logo" aria-label="עמרי, חזרה למעלה">
+      <span class="logo__mark">OMRI</span><sup>®</sup>
+      <span class="logo__sub mono">DRUMS / VOL.01</span>
+    </a>
+    <nav class="nav" aria-label="ניווט ראשי">
+      <a href="#about">עליי</a>
+      <a href="#music">מוזיקה</a>
+      <a href="#shows">הופעות</a>
+      <a href="#gallery">גלריה</a>
+      <a href="#contact" class="nav__cta">יצירת קשר</a>
+    </nav>
+    <button class="burger" aria-label="תפריט" aria-expanded="false" aria-controls="mobile-menu">
+      <span></span><span></span>
+    </button>
+  </header>
+
+  <div class="mobile-menu" id="mobile-menu" hidden>
+    <a href="#about"><i class="mono">01</i>עליי</a>
+    <a href="#music"><i class="mono">02</i>מוזיקה</a>
+    <a href="#shows"><i class="mono">03</i>הופעות</a>
+    <a href="#gallery"><i class="mono">04</i>גלריה</a>
+    <a href="#contact"><i class="mono">05</i>יצירת קשר</a>
+  </div>
+
+  <main id="top">
+    <!-- ===== HERO ===== -->
+    <section class="poster">
+      <div class="poster__inner">
+        <h1 class="poster__type" lang="en" aria-label="Omri Berger, drums">
+          <span class="poster__line">OMRI</span>
+          <span class="poster__line">BERGER</span>
+          <span class="poster__line">DRUMS</span>
+        </h1>
+        <img class="poster__cut" src="images/hero-omri.webp" alt="עמרי ברגר עם מקלות למעלה">
+      </div>
+      <p class="poster__side poster__side--a mono" lang="en">LIVE SHOWS / RECORDINGS / DRUM LESSONS</p>
+      <p class="poster__side poster__side--b mono" lang="en">TEL AVIV, ISRAEL / 2026</p>
+    </section>
+
+    <!-- ===== MARQUEE ===== -->
+    <div class="marquee" aria-hidden="true"><div class="marquee__track" data-slot="marquee"></div></div>
+
+    <!-- ===== ABOUT ===== -->
+    <section class="section section--cymbal" id="about">
+      <header class="sec-head reveal">
+        <span class="sec-num">01</span>
+        <h2 class="sec-title"><span class="en">WHO</span><span class="he">עליי</span></h2>
+        <span class="sec-meta mono">/ ABOUT<br>/ THE DRUMMER</span>
+      </header>
+
+      <div class="about">
+        <div class="pass-wrap reveal">
+          <span class="pin pin--a mono"><i>a.</i> Portrait</span>
+          <span class="pin pin--b mono"><i>b.</i> Description</span>
+          <span class="pin pin--d mono"><i>c.</i> Full body</span>
+
+          <article class="pass" aria-label="כרטיס מתופף">
+            <div class="pass__portrait" data-slot="portrait"></div>
+            <div class="pass__info">
+              <dl class="pass__fields" data-slot="card"></dl>
+              <div class="pass__foot">
+                <span class="pass__take">✶ TAKE <b>01</b> ✶</span>
+                <div class="barcode barcode--sm" data-barcode="PASS-01"></div>
+                <span class="pass__symbols mono">OD ⊕ CE <i>WAX</i></span>
+              </div>
+            </div>
+            <div class="pass__full" data-slot="fullbody"></div>
+          </article>
+        </div>
+
+        <div class="about__text reveal">
+          <div class="about__paras" data-slot="about"></div>
+          <div class="about__stats" data-slot="about-stats"></div>
+        </div>
+      </div>
+      <div class="about__cymbal" aria-hidden="true"></div>
+    </section>
+
+    <!-- ===== MUSIC ===== -->
+    <section class="section" id="music">
+      <header class="sec-head reveal">
+        <span class="sec-num">02</span>
+        <h2 class="sec-title"><span class="en">MUSIC</span><span class="he">מוזיקה</span></h2>
+        <span class="sec-meta mono">/ RECORDINGS<br>/ VIDEOS</span>
+      </header>
+
+      <div class="music reveal">
+        <div class="record" data-slot="record"></div>
+        <div class="music__intro">
+          <p class="music__note">הקלטות, סרטונים וקטעים מהופעות. לוחצים על סרטון ומנגנים.</p>
+          <div class="platforms" data-slot="platforms"></div>
+        </div>
+      </div>
+      <div class="videos" data-slot="videos"></div>
+      <div class="music__featured reveal" data-slot="featured"></div>
+    </section>
+
+    <!-- ===== WHAT I DO ===== -->
+    <section class="section section--green" id="whatido">
+      <header class="sec-head reveal">
+        <span class="sec-num">03</span>
+        <h2 class="sec-title"><span class="en">WHAT I DO</span><span class="he">מה אני עושה</span></h2>
+        <span class="sec-meta mono">/ LIVE<br>/ STUDIO<br>/ LESSONS</span>
+      </header>
+      <div class="wid">
+        <figure class="wid__art reveal">
+          <img src="images/whatido.jpg" alt="עמרי מתופף, הצללית שלו צבועה בלבן ובתוכה כתוב מה הוא עושה" loading="lazy">
+          <div class="wid__words" aria-hidden="true">
+            <span class="w1">LiVe</span>
+            <span class="w2">SH<b>O</b>WS</span>
+            <span class="w3">rEc<b>o</b>rd</span>
+            <span class="w4">iNGS</span>
+            <span class="w5">dr<b>U</b>m</span>
+            <span class="w6">LeSS<i>o</i>NS</span>
+          </div>
+        </figure>
+        <ol class="wid__list" data-slot="services"></ol>
+      </div>
+    </section>
+
+    <!-- ===== SHOWS ===== -->
+    <section class="section section--dark" id="shows">
+      <header class="sec-head reveal">
+        <span class="sec-num">04</span>
+        <h2 class="sec-title"><span class="en">LIVE</span><span class="he">הופעות</span></h2>
+        <span class="sec-meta mono">/ UPCOMING<br>/ LIVE DATES</span>
+      </header>
+
+      <h3 class="label mono"><span class="live-dot"></span>הופעות קרובות</h3>
+      <div class="tickets" data-slot="upcoming"></div>
+      <figure class="shows-photo reveal" data-slot="shows-photo"></figure>
+
+    </section>
+
+    <!-- ===== GALLERY ===== -->
+    <section class="section section--paper" id="gallery">
+      <header class="sec-head reveal">
+        <span class="sec-num">05</span>
+        <h2 class="sec-title"><span class="en">FRAMES</span><span class="he">גלריה</span></h2>
+        <span class="sec-meta mono">/ ON STAGE<br>/ BACKSTAGE</span>
+      </header>
+      <div class="collage" data-slot="gallery">
+        <svg class="collage__deco collage__burst collage__burst--a" viewBox="0 0 100 100" aria-hidden="true"><polygon points="50,0 58,32 88,12 68,40 100,50 68,60 88,88 58,68 50,100 42,68 12,88 32,60 0,50 32,40 12,12 42,32"/></svg>
+        <svg class="collage__deco collage__burst collage__burst--b" viewBox="0 0 100 100" aria-hidden="true"><polygon points="50,0 56,30 76,6 66,36 96,22 72,46 100,56 70,62 90,88 60,72 52,100 44,72 18,92 32,64 0,58 28,46 6,22 36,34 26,6 46,30"/></svg>
+        <svg class="collage__deco collage__scribble collage__scribble--a" viewBox="0 0 200 100" aria-hidden="true"><path d="M20 55 C30 15 170 5 185 45 C195 80 60 95 25 70 C5 55 60 20 120 22 C170 25 190 60 150 78"/></svg>
+        <svg class="collage__deco collage__scribble collage__scribble--b" viewBox="0 0 120 120" aria-hidden="true"><path d="M10 110 L10 70 M10 110 L50 110 M80 10 L112 10 L112 42 M100 4 L118 24 M118 4 L100 24"/></svg>
+        <svg class="collage__deco collage__scribble collage__scribble--c" viewBox="0 0 200 100" aria-hidden="true"><path d="M10 60 C25 20 60 90 80 45 C95 15 120 85 140 40 C155 15 175 70 190 35 M15 75 C40 40 70 95 95 60 C115 35 140 95 165 55"/></svg>
+      </div>
+    </section>
+
+    <!-- ===== CONTACT ===== -->
+    <section class="contact" id="contact">
+      <div class="contact__top">
+        <span class="sec-num sec-num--ink">06</span>
+        <p class="contact__big" aria-hidden="true">LET'S<br>PLAY</p>
+        <div class="contact__intro">
+          <h2>יצירת קשר</h2>
+          <p>יש לכם הופעה, הקלטה או סשן? צריכים מחליף לערב? בואו נדבר.</p>
+        </div>
+      </div>
+      <div class="contact__links" data-slot="contact"></div>
+    </section>
+  </main>
+
+  <footer class="footer mono">
+    <span>© <span data-slot="year"></span> OMRI DRUMS</span>
+    <span class="footer__mid" data-slot="credit"></span>
+    <a href="#top">BACK TO TOP ↑</a>
+  </footer>
+
+  <dialog class="lightbox" aria-label="תמונה מוגדלת">
+    <button class="lightbox__close mono" aria-label="סגירה">CLOSE ✕</button>
+    <img alt="">
+    <p class="lightbox__cap mono"></p>
+  </dialog>
+
+  <script src="content.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>
