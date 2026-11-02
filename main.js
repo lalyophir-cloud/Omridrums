@@ -264,7 +264,23 @@
   if (C.email) links.push({ k: "EMAIL", he: "מייל", v: C.email, href: "mailto:" + C.email });
   var ig = (C.instagram || "").replace(/^https?:\/\/(www\.)?instagram\.com\//, "").replace(/\/.*$/, "");
   links.push({ k: "INSTAGRAM", he: "אינסטגרם", v: ig ? "@" + ig : "בקרוב", href: C.instagram || "", ext: true });
-  links.push({ k: "WHATSAPP", he: "וואטסאפ", v: C.whatsapp ? C.whatsapp.replace(/^972(\d{2})(\d+)$/, "0$1-$2") : "בקרוב", href: C.whatsapp ? "https://wa.me/" + C.whatsapp.replace(/\D/g, "") : "", ext: true });
+  function waLink(msg) {
+    if (!C.whatsapp) return "";
+    return "https://wa.me/" + C.whatsapp.replace(/\D/g, "") + (msg ? "?text=" + encodeURIComponent(msg) : "");
+  }
+  links.push({ k: "WHATSAPP", he: "וואטסאפ", v: C.whatsapp ? C.whatsapp.replace(/^972(\d{2})(\d+)$/, "0$1-$2") : "בקרוב", href: waLink(C.whatsappMsg), ext: true });
+
+  /* ---------- FLOATING WHATSAPP ---------- */
+  if (C.whatsapp) {
+    var fab = document.createElement("a");
+    fab.className = "wa-fab";
+    fab.href = waLink(C.whatsappMsg);
+    fab.target = "_blank";
+    fab.rel = "noopener";
+    fab.setAttribute("aria-label", "שליחת הודעה בוואטסאפ");
+    fab.innerHTML = '<svg viewBox="0 0 32 32" aria-hidden="true"><path fill="currentColor" d="M16.04 3C9.4 3 4 8.39 4 15.03c0 2.12.55 4.19 1.6 6.01L4 29l8.17-1.57a12.03 12.03 0 0 0 3.87.64C22.68 28.07 28 22.68 28 16.04 28 9.4 22.68 3 16.04 3zm0 22.04c-1.2 0-2.38-.27-3.46-.78l-.5-.24-4.85.93.96-4.72-.27-.52a9.97 9.97 0 0 1-1.52-5.28c0-5.5 4.5-9.97 10.04-9.97 5.5 0 9.96 4.47 9.96 9.97 0 5.5-4.46 10.61-9.96 10.61zm5.5-7.46c-.3-.15-1.78-.88-2.06-.98-.27-.1-.47-.15-.67.15-.2.3-.77.98-.95 1.18-.17.2-.35.22-.65.07-.3-.15-1.27-.47-2.42-1.5-.9-.8-1.5-1.78-1.67-2.08-.17-.3-.02-.46.13-.6.14-.13.3-.35.45-.52.15-.18.2-.3.3-.5.1-.2.05-.38-.02-.53-.08-.15-.68-1.63-.93-2.23-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.22 3.08c.15.2 2.1 3.2 5.08 4.49.71.3 1.26.49 1.7.63.71.23 1.36.2 1.88.12.57-.09 1.78-.73 2.03-1.43.25-.7.25-1.3.17-1.43-.07-.13-.27-.2-.57-.35z"/></svg>';
+    document.body.appendChild(fab);
+  }
 
   slot("contact").innerHTML = links.map(function (l, i) {
     var attrs = l.href ? 'href="' + esc(l.href) + '"' + (l.ext ? ' target="_blank" rel="noopener"' : "") : 'aria-disabled="true"';
@@ -276,9 +292,8 @@
     "</a>";
   }).join("");
 
-  var wa = C.whatsapp ? "https://wa.me/" + C.whatsapp.replace(/\D/g, "") : "";
   slot("services").innerHTML = (S.services || []).map(function (s, i) {
-    var href = s.link === "whatsapp" ? wa : s.link;
+    var href = s.link === "whatsapp" ? waLink(s.msg || C.whatsappMsg) : s.link;
     var ext = /^https?:/.test(href || "");
     return '<li class="reveal"><span class="wid__num mono">' + pad(i + 1) + " / " + esc(s.en) + "</span>" +
       "<h3>" + esc(s.he) + "</h3><p>" + esc(s.text) + "</p>" +
