@@ -209,14 +209,18 @@
   function rnd(seed) { var x = Math.sin(seed * 9301 + 49297) * 233280; return x - Math.floor(x); }
   function layoutTable() {
     var W = collage.clientWidth, cols = W < 640 ? 2 : W < 1000 ? 3 : 4;
-    var cw = W / cols, ch = cw * (cols === 2 ? 1.05 : .82), maxBottom = 0;
+    var cw = W / cols, maxBottom = 0, colH = [];
+    for (var k = 0; k < cols; k++) colH.push(0);
     cards.forEach(function (c, i) {
       var ar = +c.getAttribute("data-ar") || 1.4;
-      var w = ar >= 1 ? cw * 1.12 : cw * .78, h = w / ar;
-      var col = i % cols, row = Math.floor(i / cols);
-      var cx = cw * (col + .5) + (rnd(i + 1) - .5) * cw * .28;
-      var cy = ch * (row + .5) + (rnd(i + 50) - .5) * ch * .3 + h * .1;
-      var x = Math.min(Math.max(cx - w / 2, -cw * .04), W - w + cw * .04), y = Math.max(cy - h / 2, 0);
+      var w = ar >= 1 ? cw * 1.04 : cw * .8, h = w / ar + 14;
+      // כל תמונה נכנסת לעמודה הכי נמוכה כדי שלא יישארו חורים, עם פיזור קל ועקמומיות
+      var col = 0;
+      for (var k2 = 1; k2 < cols; k2++) if (colH[k2] < colH[col] - 1) col = k2;
+      var cx = cw * (col + .5) + (rnd(i + 1) - .5) * cw * .16;
+      var x = Math.min(Math.max(cx - w / 2, -cw * .03), W - w + cw * .03);
+      var y = Math.max(colH[col] + (rnd(i + 50) - .5) * cw * .06, 0);
+      colH[col] = y + h - cw * .05;
       c.style.width = w.toFixed(1) + "px";
       c.style.left = x.toFixed(1) + "px";
       c.style.top = y.toFixed(1) + "px";
