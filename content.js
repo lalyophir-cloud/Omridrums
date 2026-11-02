@@ -46,7 +46,7 @@ window.SITE = {
     //   title:   מה זה. למשל "סולו תופים"
     //   from:    מאיפה. למשל "גגארין, תל אביב 2026"
     // Shorts מוצגים לאורך לבד. שדה ריק לא מוצג. סרטון בלי לינק ובלי קובץ מוצג כמקום שמור.
-    featured: { file: "videos/crawfords-pass.mp4", poster: "videos/crawfords-pass.jpg", ar: 1.983, title: "Crawford's Pass", from: "Aziz Leon" },
+    featured: null,
     videos: [
       { file: "videos/arctic-kartiv.mp4", poster: "videos/arctic-kartiv.jpg", ar: 0.5625, title: "ארקטיק קרטיב", from: "" },
       { file: "videos/live-9405.mp4",     poster: "videos/live-9405.jpg",     ar: 0.5625, title: "", from: "" },
