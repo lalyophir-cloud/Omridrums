@@ -570,14 +570,6 @@ body.beat .beam { opacity: 1; }
   box-shadow: 0 2px 4px rgba(0, 0, 0, .25), 10px 26px 40px rgba(13, 13, 13, .32);
 }
 
-.collage__deco { position: absolute; z-index: 0; pointer-events: none; }
-.collage__burst { fill: #1d2433; width: clamp(80px, 12vw, 170px); }
-.collage__burst--a { top: 3%; left: -3%; transform: rotate(10deg); }
-.collage__burst--b { top: 55%; right: -3%; width: clamp(90px, 13vw, 190px); }
-.collage__scribble { fill: none; stroke: var(--green); stroke-width: 2.4; stroke-linecap: round; }
-.collage__scribble--a { width: clamp(140px, 20vw, 280px); top: -2%; right: 6%; transform: rotate(-8deg); }
-.collage__scribble--b { width: clamp(70px, 9vw, 120px); bottom: 0; right: 0; }
-.collage__scribble--c { width: clamp(110px, 14vw, 200px); bottom: -1%; left: 2%; opacity: .8; }
 
 .lightbox { border: 0; padding: 0; background: transparent; max-width: 92vw; max-height: 92vh; overflow: visible; }
 .lightbox::backdrop { background: rgba(13, 13, 13, .92); }
@@ -694,7 +686,7 @@ body.beat .beam { opacity: 1; }
 }
 
 @media (max-width: 640px) {
-  .collage__burst--a { left: -10%; } .collage__burst--b { right: -10%; }
+
   .cl-shot { padding: 5px; }
   body { font-size: 16px; }
   .pass-wrap { padding: 10px 0; }
