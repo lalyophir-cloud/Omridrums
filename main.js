@@ -180,7 +180,7 @@
       "</div>" +
       '<div class="ticket__stub">' + cta + '<div class="barcode barcode--sm" data-barcode="' + esc(s.date + s.venue) + '"></div></div>' +
     "</article>";
-  }).join("") : '<p class="tickets__empty">אין הופעות קרובות כרגע. שווה לקפוץ לפה שוב בקרוב.</p>';
+  }).join("") : '<p class="tickets__empty">אין הופעות קרובות כרגע, שווה לקפוץ לפה שוב בקרוב</p>';
 
 
   var SP = S.showsPhoto;
