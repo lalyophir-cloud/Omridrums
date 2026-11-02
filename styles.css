@@ -732,3 +732,19 @@ body.beat .beam { opacity: 1; }
 .pass__portrait img { object-position: 72% 42%; }
 .pass__full img { object-position: 45% 35%; }
 .about__stats b.is-symbol { font-family: "Rubik", sans-serif; font-weight: 700; line-height: .9; transform: scale(1.35); }
+
+/* ---------- כפתור וואטסאפ צף ---------- */
+.wa-fab {
+  position: fixed; left: 18px; bottom: 18px; z-index: 55;
+  width: 58px; height: 58px; border-radius: 50%;
+  display: grid; place-items: center;
+  background: #25d366; color: #fff;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, .35);
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+.wa-fab svg { width: 32px; height: 32px; }
+.wa-fab:hover { transform: scale(1.08); box-shadow: 0 6px 18px rgba(0, 0, 0, .45); }
+body.menu-open .wa-fab { display: none; }
+@media (max-width: 600px) {
+  .wa-fab { left: 14px; bottom: 14px; width: 54px; height: 54px; }
+}
